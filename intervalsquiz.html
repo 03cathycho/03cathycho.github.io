@@ -70,7 +70,7 @@ TO RUN: http://localhost:8000/ -> http://localhost:8000/intervalsquiz.html
 
   window.onload = function () {
     MIDI.loadPlugin({
-      soundfontUrl: "./soundfont/",
+      soundfontUrl: "../soundfont/",
       instrument: "acoustic_grand_piano",
       onprogress: function(state, progress) {
         console.log(state, progress);
