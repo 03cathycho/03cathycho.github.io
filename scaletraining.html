@@ -1,0 +1,218 @@
+<!-- 
+Scale training with buttons
+TODO: add church modes and other minors, but also, how do you call functions?
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <!-- polyfill -->
+  <script src="/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+  <!-- midi.js package -->
+  <script src="/js/midi/audioDetect.js" type="text/javascript"></script>
+  <script src="/js/midi/gm.js" type="text/javascript"></script>
+  <script src="/js/midi/loader.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
+  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<title>Scale Training: Button Style</title>
+<h1>Button Style Scale Training</h1>
+
+<p>Current score: <text id="insertScore"></text></p>
+<p>Select the correct chord type:</p>
+<button onclick="playAgain()">Click to hear again</button><br><br>
+
+<input type="button" onclick="submit(this.id)" id="1" value="Major" />
+<input type="button" onclick="submit(this.id)" id="2" value="Natural Minor" /> 
+<input type="button" onclick="submit(this.id)" id="3" value="Harmonic Minor" />
+<input type="button" onclick="submit(this.id)" id="4" value="Melodic Minor" /> 
+<!-- <input type="button" onclick="submit(this.id)" id="43" value="Maj" />
+<input type="button" onclick="submit(this.id)" id="44" value="Aug" /> -->
+
+<p id="insertAnswer"></p>
+<!-- <button onclick="submit()">Submit</button><br><br> -->
+<div id="nextButton"><button onclick="next()">Next</button></div>
+
+<script>
+  var startRange = 57; //57 = A4
+  var endRange = 69; //69 = A5
+  var noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
+  var answer = getRndInteger(1, 4 + 1); //1 = major, 2 = natural minor, 3 = harmonic minor, 4 = melodic minor
+
+  var delay = 0.05; // play one note every quarter second
+  var velocity = 90; // how hard the note hits
+  var score = 0;
+  var playDuration = 0.75;
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  window.onload = function () {
+    MIDI.loadPlugin({
+      soundfontUrl: "./soundfont/",
+      instrument: "acoustic_grand_piano",
+      onprogress: function(state, progress) {
+        console.log(state, progress);
+      },
+      onsuccess: function() {
+        var i = 0;
+        var timeCount = 0;
+        while (i <= 12) {
+          MIDI.noteOn(0, noteBass + i, velocity, delay + playDuration * timeCount);
+          MIDI.noteOff(0, noteBass + i, delay + playDuration * (timeCount + 1));
+          timeCount++;
+          // MAJOR
+          if (answer == 1) {
+            i += deltaMaj(i);
+          }
+          // NATURAL MINOR
+          if (answer == 2) {
+            i += deltaNatMin(i);
+          }
+          // HARMONIC MINOR
+          if (answer == 3) {
+            i += deltaHarmMin(i);
+          }
+          // MELODIC MINOR
+          if (answer == 4) {
+            i += deltaMelMin(i);
+          }
+        }
+      }
+    });
+  };
+
+  function deltaMaj(i) {
+    if (i == 0 || i == 2 || i == 5 || i == 7 || i == 9) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
+  function deltaNatMin(i) {
+    if (i == 0 || i == 3 || i == 5 || i == 8 || i == 10) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
+  function deltaHarmMin(i) {
+    if (i == 0 || i == 3 || i == 5) {
+      return 2;
+    } else if (i == 8) {
+      return 3;
+    } else {
+      return 1;
+    }
+  }
+
+  function deltaMelMin(i) {
+    if (i == 0 || i == 3 || i == 5 || i == 7 || i == 9) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
+  function submit(clicked_id) {
+    // if ($(#answer).attr('checked')) {
+    if (clicked_id == answer) {
+      $("#insertAnswer").html("Correct!");
+      // document.getElementById("insertAnswer").innerHTML = "Correct!";        
+      $("#nextButton").show(); 
+      score++;
+      $("#insertScore").html(score);
+      } else {
+      $("#insertAnswer").html("Try again.")
+      // document.getElementById("insertAnswer").innerHTML = "Try again.";
+      $("#nextButton").hide(); 
+    }
+  }
+
+  function next() {
+    startRange = 57; //57 = A4
+    endRange = 69; //69 = A5
+    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
+    answer = getRndInteger(1, 4 + 1); //1 = major, 2 = nautal minor
+
+    var i = 0;
+    var timeCount = 0;
+    while (i <= 12) {
+      MIDI.noteOn(0, noteBass + i, velocity, delay + playDuration * timeCount);
+      MIDI.noteOff(0, noteBass + i, delay + playDuration * (timeCount + 1));
+      timeCount++;
+      // MAJOR
+      if (answer == 1) {
+        i += deltaMaj(i);
+      }
+      // NATURAL MINOR
+      if (answer == 2) {
+        i += deltaNatMin(i);
+      }
+      // HARMONIC MINOR
+      if (answer == 3) {
+        i += deltaHarmMin(i);
+      }
+      // MELODIC MINOR
+      if (answer == 4) {
+        i += deltaMelMin(i);
+      }
+    }
+
+    $("#insertAnswer").html("");
+    // document.getElementById("insertAnswer").innerHTML = "";
+  }
+
+  function playAgain() {
+    //Can i just make this entire thing into a method and call it?
+    var i = 0;
+    var timeCount = 0;
+    while (i <= 12) {
+      MIDI.noteOn(0, noteBass + i, velocity, delay + playDuration * timeCount);
+      MIDI.noteOff(0, noteBass + i, delay + playDuration * (timeCount + 1));
+      timeCount++;
+      // MAJOR
+      if (answer == 1) {
+        i += deltaMaj(i);
+      }
+      // NATURAL MINOR
+      if (answer == 2) {
+        i += deltaNatMin(i);
+      }
+      // HARMONIC MINOR
+      if (answer == 3) {
+        i += deltaHarmMin(i);
+      }
+      // MELODIC MINOR
+      if (answer == 4) {
+        i += deltaMelMin(i);
+      }
+    }
+  }
+
+  $(document).ready(function(){
+    $("#nextButton").hide();
+    $("#nextButton").click(function(){
+      $("#nextButton").hide(); 
+    });
+  });
+
+</script>
+
+</body>
+</html>
