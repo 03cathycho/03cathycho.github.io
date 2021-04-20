@@ -1,4 +1,21 @@
+html {
+  background: #add8e6;
+  /*background-size: cover;*/
+}
 
+h1 {
+  color: navy;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 55px; 
+  text-align: center
+}
+
+p {
+  color: black;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 18px; 
+  text-align: left;
+}
 
 /* CLICK TO HEAR AGAIN, NEXT BUTTON*/
 button {
@@ -17,9 +34,11 @@ button {
   box-shadow: 0 9px #999;
 }
 
-button: hover {background-color: gray}
+button:hover {
+  background-color: gray;
+}
 
-button: active {
+button:active {
   background-color: gray;
   box-shadow: 0 2px #666;
   transform: translateY(10px);
@@ -34,8 +53,30 @@ input[type=button] {
   text-align: center;
 }
 
-input[type=button]: hover {
-  background-color: rgba(255,204,0,0.8);
+.wrongButton {
+  background-color: red;
 }
 
+.rightButton {
+  background-color: green;
+}
 
+a {
+  background-color:navy;
+  text-align: center;
+  margin: 20px;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  text-decoration: none;
+  display: inline-block;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 20px;
+  box-shadow: 0 9px #999; /*gray*/
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+a:hover {
+  background-color: black;
+}

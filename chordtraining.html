@@ -31,32 +31,16 @@ TODO: add basic 7 chords, or just all of them or none
 <h1>Button Style Chord Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
-<p>Select the correct chord type:</p>
-<button onclick="playAgain()">Click to hear again</button><br><br>
+<button onclick="playAgain()">Click to hear chord</button><br><br>
 
-<input type="button" onclick="submit(this.id)" id="33" value="Dim" />
-<input type="button" onclick="submit(this.id)" id="34" value="Min" /> 
-<input type="button" onclick="submit(this.id)" id="43" value="Maj" />
-<input type="button" onclick="submit(this.id)" id="44" value="Aug" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="33" value="Dim" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="34" value="Min" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="43" value="Maj" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="44" value="Aug" /><br>
 
-<!-- RADIO BUTTON STYLE
-<input name="option" type="radio" id="1" />m2<br>
-<input name="option" type="radio" id="2" />M2<br>
-<input name="option" type="radio" id="3" />m3<br>
-<input name="option" type="radio" id="4" />M3<br>
-<input name="option" type="radio" id="5" />P4<br>
-<input name="option" type="radio" id="6" />TT<br>
-<input name="option" type="radio" id="7" />P5<br>
-<input name="option" type="radio" id="8" />m6<br>
-<input name="option" type="radio" id="9" />M6<br>
-<input name="option" type="radio" id="10" />m7<br>
-<input name="option" type="radio" id="11" />M7<br>
-<input name="option" type="radio" id="12" />P8<br> 
--->
-
-<p id="insertAnswer"></p>
-<!-- <button onclick="submit()">Submit</button><br><br> -->
 <div id="nextButton"><button onclick="next()">Next</button></div>
+
+<script src="base.js"></script>
 
 <script>
   var startRange = 57; //57 = A4
@@ -69,63 +53,35 @@ TODO: add basic 7 chords, or just all of them or none
   var velocity = 90; // how hard the note hits
   var score = 0;
 
-  window.onload = function () {
-    MIDI.loadPlugin({
-      soundfontUrl: "./soundfont/",
-      instrument: "acoustic_grand_piano",
-      onprogress: function(state, progress) {
-        console.log(state, progress);
-      },
-      onsuccess: function() {
-        MIDI.chordOn(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], velocity, delay);
-        MIDI.chordOff(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], delay + 1.5);
-      }
-    });
-  };
-
-  function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
   function submit(clicked_id) {
-    // if ($(#answer).attr('checked')) {
-    if (clicked_id == answer) {
-      $("#insertAnswer").html("Correct!");
-      // document.getElementById("insertAnswer").innerHTML = "Correct!";        
+    if (clicked_id == answer) {   
       $("#nextButton").show(); 
       score++;
       $("#insertScore").html(score);
+      $("body").find('#' + clicked_id).addClass("rightButton");
+      $(".ansChoice").prop('disabled', true);
       } else {
-      $("#insertAnswer").html("Try again.")
-      // document.getElementById("insertAnswer").innerHTML = "Try again.";
       $("#nextButton").hide(); 
+      $("body").find('#' + clicked_id).addClass("wrongButton");
+      $("body").find('#' + clicked_id).prop('disabled', true);
     }
   }
 
   function next() {
-    noteBass = getRndInteger(startRange, endRange + 1);
+    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     intervalA = getRndInteger(3, 4 + 1);
     intervalB = getRndInteger(3, 4 + 1)
     answer = "" + intervalA + intervalB;
-
-    MIDI.chordOn(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], velocity, delay);
-    MIDI.chordOff(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], delay + 1.5);
-    $("#insertAnswer").html("");
-    // document.getElementById("insertAnswer").innerHTML = "";
+    playAgain(); 
+    $(".ansChoice").removeClass("wrongButton");
+    $(".ansChoice").removeClass("rightButton");
+    $(".ansChoice").prop('disabled', false);
   }
 
   function playAgain() {
     MIDI.chordOn(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], velocity, delay);
     MIDI.chordOff(0, [noteBass, noteBass+intervalA, noteBass+intervalA+intervalB], delay + 1.5);
   }
-
-  $(document).ready(function(){
-    $("#nextButton").hide();
-    $("#nextButton").click(function(){
-      $("#nextButton").hide(); 
-    });
-  });
-
 </script>
 
 </body>

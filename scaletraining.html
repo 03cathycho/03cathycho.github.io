@@ -1,6 +1,8 @@
 <!-- 
 Scale training with buttons
 TODO: add church modes and other minors, but also, how do you call functions?
+TODO: put in the head (base.js - pertain to all the files, intervals.js)
+index.html file to link all the files together
 -->
 
 <!DOCTYPE html>
@@ -31,19 +33,16 @@ TODO: add church modes and other minors, but also, how do you call functions?
 <h1>Button Style Scale Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
-<p>Select the correct chord type:</p>
-<button onclick="playAgain()">Click to hear again</button><br><br>
+<button onclick="playAgain()">Click to hear scale</button><br><br>
 
-<input type="button" onclick="submit(this.id)" id="1" value="Major" />
-<input type="button" onclick="submit(this.id)" id="2" value="Natural Minor" /> 
-<input type="button" onclick="submit(this.id)" id="3" value="Harmonic Minor" />
-<input type="button" onclick="submit(this.id)" id="4" value="Melodic Minor" /> 
-<!-- <input type="button" onclick="submit(this.id)" id="43" value="Maj" />
-<input type="button" onclick="submit(this.id)" id="44" value="Aug" /> -->
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="Major" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="Natural Minor" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="Harmonic Minor" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Melodic Minor" /> 
 
-<p id="insertAnswer"></p>
-<!-- <button onclick="submit()">Submit</button><br><br> -->
 <div id="nextButton"><button onclick="next()">Next</button></div>
+
+<script src="base.js"></script>
 
 <script>
   var startRange = 57; //57 = A4
@@ -56,130 +55,39 @@ TODO: add church modes and other minors, but also, how do you call functions?
   var score = 0;
   var playDuration = 0.75;
 
+  var deltaMaj = [2, 1, 2, 1, 1, 2, 1, 2, 1, 2, 1, 1, 1];
+  var deltaNatMin = [2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1, 1];
+  var deltaHarmMin = [2, 1, 1, 2, 1, 2, 1, 1, 3, 1, 1, 1, 1];
+  var deltaMelMin = [2, 1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 1, 1];
+
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  window.onload = function () {
-    MIDI.loadPlugin({
-      soundfontUrl: "./soundfont/",
-      instrument: "acoustic_grand_piano",
-      onprogress: function(state, progress) {
-        console.log(state, progress);
-      },
-      onsuccess: function() {
-        var i = 0;
-        var timeCount = 0;
-        while (i <= 12) {
-          MIDI.noteOn(0, noteBass + i, velocity, delay + playDuration * timeCount);
-          MIDI.noteOff(0, noteBass + i, delay + playDuration * (timeCount + 1));
-          timeCount++;
-          // MAJOR
-          if (answer == 1) {
-            i += deltaMaj(i);
-          }
-          // NATURAL MINOR
-          if (answer == 2) {
-            i += deltaNatMin(i);
-          }
-          // HARMONIC MINOR
-          if (answer == 3) {
-            i += deltaHarmMin(i);
-          }
-          // MELODIC MINOR
-          if (answer == 4) {
-            i += deltaMelMin(i);
-          }
-        }
-      }
-    });
-  };
-
-  function deltaMaj(i) {
-    if (i == 0 || i == 2 || i == 5 || i == 7 || i == 9) {
-      return 2;
-    } else {
-      return 1;
-    }
-  }
-
-  function deltaNatMin(i) {
-    if (i == 0 || i == 3 || i == 5 || i == 8 || i == 10) {
-      return 2;
-    } else {
-      return 1;
-    }
-  }
-
-  function deltaHarmMin(i) {
-    if (i == 0 || i == 3 || i == 5) {
-      return 2;
-    } else if (i == 8) {
-      return 3;
-    } else {
-      return 1;
-    }
-  }
-
-  function deltaMelMin(i) {
-    if (i == 0 || i == 3 || i == 5 || i == 7 || i == 9) {
-      return 2;
-    } else {
-      return 1;
-    }
-  }
-
   function submit(clicked_id) {
-    // if ($(#answer).attr('checked')) {
-    if (clicked_id == answer) {
-      $("#insertAnswer").html("Correct!");
-      // document.getElementById("insertAnswer").innerHTML = "Correct!";        
+    if (clicked_id == answer) {   
       $("#nextButton").show(); 
       score++;
       $("#insertScore").html(score);
+      $("body").find('#' + clicked_id).addClass("rightButton");
+      $(".ansChoice").prop('disabled', true);
       } else {
-      $("#insertAnswer").html("Try again.")
-      // document.getElementById("insertAnswer").innerHTML = "Try again.";
       $("#nextButton").hide(); 
+      $("body").find('#' + clicked_id).addClass("wrongButton");
+      $("body").find('#' + clicked_id).prop('disabled', true);
     }
   }
 
   function next() {
-    startRange = 57; //57 = A4
-    endRange = 69; //69 = A5
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
-    answer = getRndInteger(1, 4 + 1); //1 = major, 2 = nautal minor
-
-    var i = 0;
-    var timeCount = 0;
-    while (i <= 12) {
-      MIDI.noteOn(0, noteBass + i, velocity, delay + playDuration * timeCount);
-      MIDI.noteOff(0, noteBass + i, delay + playDuration * (timeCount + 1));
-      timeCount++;
-      // MAJOR
-      if (answer == 1) {
-        i += deltaMaj(i);
-      }
-      // NATURAL MINOR
-      if (answer == 2) {
-        i += deltaNatMin(i);
-      }
-      // HARMONIC MINOR
-      if (answer == 3) {
-        i += deltaHarmMin(i);
-      }
-      // MELODIC MINOR
-      if (answer == 4) {
-        i += deltaMelMin(i);
-      }
-    }
-
-    $("#insertAnswer").html("");
-    // document.getElementById("insertAnswer").innerHTML = "";
+    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+    answer = getRndInteger(1, 4 + 1);
+    playAgain(); 
+    $(".ansChoice").removeClass("wrongButton");
+    $(".ansChoice").removeClass("rightButton");
+    $(".ansChoice").prop('disabled', false);
   }
 
   function playAgain() {
-    //Can i just make this entire thing into a method and call it?
     var i = 0;
     var timeCount = 0;
     while (i <= 12) {
@@ -188,30 +96,22 @@ TODO: add church modes and other minors, but also, how do you call functions?
       timeCount++;
       // MAJOR
       if (answer == 1) {
-        i += deltaMaj(i);
+        i += deltaMaj[i];
       }
       // NATURAL MINOR
       if (answer == 2) {
-        i += deltaNatMin(i);
+        i += deltaNatMin[i];
       }
       // HARMONIC MINOR
       if (answer == 3) {
-        i += deltaHarmMin(i);
+        i += deltaHarmMin[i];
       }
       // MELODIC MINOR
       if (answer == 4) {
-        i += deltaMelMin(i);
+        i += deltaMelMin[i];
       }
     }
   }
-
-  $(document).ready(function(){
-    $("#nextButton").hide();
-    $("#nextButton").click(function(){
-      $("#nextButton").hide(); 
-    });
-  });
-
 </script>
 
 </body>
