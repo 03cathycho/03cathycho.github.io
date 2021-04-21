@@ -1,0 +1,130 @@
+<!-- 
+Chord training with buttons
+TODO: add basic 7 chords, or just all of them or none
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <!-- polyfill -->
+  <script src="/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+  <!-- midi.js package -->
+  <script src="/js/midi/audioDetect.js" type="text/javascript"></script>
+  <script src="/js/midi/gm.js" type="text/javascript"></script>
+  <script src="/js/midi/loader.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
+  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<title>Chord Quiz: Button Style</title>
+<h1>Button Style Chord Training</h1>
+
+<p>Current score: <text id="insertScore"></text></p>
+<button onclick="playAgain()">Click to hear chord</button><br><br>
+
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="Dominant 7th" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="Major 7th" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="Minor 7th" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="Half Diminished 7th" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Diminished 7th" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="6" value="Minor Major 7th" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="Augmented Major 7th" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="8" value="Augmented 7th" /><br>
+
+<div id="nextButton"><button onclick="next()">Next</button></div>
+
+<script src="base.js"></script>
+
+<script>
+  var startRange = 57; //57 = A4
+  var endRange = 69; //69 = A5
+  var noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
+  var answer = getRndInteger(1, 8 + 1);
+  var delay = 0.05; // play one note every quarter second
+  var velocity = 90; // how hard the note hits
+  var score = 0;
+
+  var min3 = 3;
+  var maj3 = 4;
+  var dim5 = 6;
+  var per5 = 7;
+  var aug5 = 8;
+  var dim7 = 9;
+  var min7 = 10;
+  var maj7 = 11;
+
+  var deltaDominant = [maj3, per5, min7];
+  var deltaMajor = [maj3, per5, maj7];
+  var deltaMinor = [min3, per5, min7];
+  var deltaHalfDim = [min3, dim5, min7];
+  var deltaDiminished = [min3, dim5, dim7];
+
+  var deltaMinMaj = [min3, per5, min7];
+  var deltaAugMajor = [maj3, aug5, maj7];
+  var deltaAugmented = [maj3, aug5, min7];
+
+  function submit(clicked_id) {
+    if (clicked_id == answer) {   
+      $("#nextButton").show(); 
+      score++;
+      $("#insertScore").html(score);
+      $("body").find('#' + clicked_id).addClass("rightButton");
+      $(".ansChoice").prop('disabled', true);
+      } else {
+      $("#nextButton").hide(); 
+      $("body").find('#' + clicked_id).addClass("wrongButton");
+      $("body").find('#' + clicked_id).prop('disabled', true);
+    }
+  }
+
+  function next() {
+    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+    answer = getRndInteger(1, 8 + 1);
+    playAgain(); 
+    $(".ansChoice").removeClass("wrongButton");
+    $(".ansChoice").removeClass("rightButton");
+    $(".ansChoice").prop('disabled', false);
+  }
+
+  function playAgain() {
+    if (answer == 1) { //deltaDominant
+      MIDI.chordOn(0, [noteBass, noteBass+deltaDominant[0], noteBass+deltaDominant[1], noteBass+deltaDominant[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaDominant[0], noteBass+deltaDominant[1], noteBass+deltaDominant[2]], delay + 1.5);
+    } else if (answer == 2) { //deltaMajor
+      MIDI.chordOn(0, [noteBass, noteBass+deltaMajor[0], noteBass+deltaMajor[1], noteBass+deltaMajor[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaMajor[0], noteBass+deltaMajor[1], noteBass+deltaMajor[2]], delay + 1.5);
+    } else if (answer == 3) { //deltaMinor
+      MIDI.chordOn(0, [noteBass, noteBass+deltaMinor[0], noteBass+deltaMinor[1], noteBass+deltaMinor[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaMinor[0], noteBass+deltaMinor[1], noteBass+deltaMinor[2]], delay + 1.5);
+    } else if (answer == 4) { //deltaHalfDim
+      MIDI.chordOn(0, [noteBass, noteBass+deltaHalfDim[0], noteBass+deltaHalfDim[1], noteBass+deltaHalfDim[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaHalfDim[0], noteBass+deltaHalfDim[1], noteBass+deltaHalfDim[2]], delay + 1.5);
+    } else if (answer == 5) { //deltaDiminished
+      MIDI.chordOn(0, [noteBass, noteBass+deltaDiminished[0], noteBass+deltaDiminished[1], noteBass+deltaDiminished[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaDiminished[0], noteBass+deltaDiminished[1], noteBass+deltaDiminished[2]], delay + 1.5);
+    } else if (answer == 6) { //deltaMinMaj
+      MIDI.chordOn(0, [noteBass, noteBass+deltaMinMaj[0], noteBass+deltaMinMaj[1], noteBass+deltaMinMaj[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaMinMaj[0], noteBass+deltaMinMaj[1], noteBass+deltaMinMaj[2]], delay + 1.5);
+    } else if (answer == 7) { //deltaAugMajor
+      MIDI.chordOn(0, [noteBass, noteBass+deltaAugMajor[0], noteBass+deltaAugMajor[1], noteBass+deltaAugMajor[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaAugMajor[0], noteBass+deltaAugMajor[1], noteBass+deltaAugMajor[2]], delay + 1.5);
+    } else if (answer == 8) { //deltaAugmented
+      MIDI.chordOn(0, [noteBass, noteBass+deltaAugmented[0], noteBass+deltaAugmented[1], noteBass+deltaAugmented[2]], velocity, delay);
+      MIDI.chordOff(0, [noteBass, noteBass+deltaAugmented[0], noteBass+deltaAugmented[1], noteBass+deltaAugmented[2]], delay + 1.5);
+    }
+  }
+</script>
+
+</body>
+</html>
