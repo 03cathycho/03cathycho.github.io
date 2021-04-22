@@ -1,3 +1,5 @@
+var previous = 0;
+
 window.onload = function () {
   MIDI.loadPlugin({
     soundfontUrl: "./soundfont/",
@@ -9,7 +11,12 @@ window.onload = function () {
 };
 
 function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  var x = previous;
+  while (x == previous) {
+    x = Math.floor(Math.random() * (max - min)) + min;
+  }
+  previous = x;
+  return x;
 }
 
 // function getRndIntegerArray(int[] array) {

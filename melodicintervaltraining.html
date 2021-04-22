@@ -32,8 +32,8 @@ use special class from button (jQuery add, remove in js- define style of the cla
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/08bCx1WdRjc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>Need help?</iframe> -->
 
 
-<title>Melodic Interval Quiz: Button Style</title>
-<h1>Button Style Melodic Interval Training</h1>
+<title>Melodic Interval Training</title>
+<h1>Melodic Interval Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
 <button onclick="playAgain()">Click to hear interval</button><br><br>
@@ -51,6 +51,7 @@ use special class from button (jQuery add, remove in js- define style of the cla
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="11" value="M7" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="12" value="P8" /><br>
 
+<p></p>
 <div id="nextButton"><button onclick="next()">Next</button></div>
 
 <script src="base.js"></script>
@@ -85,7 +86,7 @@ use special class from button (jQuery add, remove in js- define style of the cla
   function next() {
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 12 + 1);
-    playAgain(); 
+    setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");
     $(".ansChoice").removeClass("rightButton");
     $(".ansChoice").prop('disabled', false);

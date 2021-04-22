@@ -26,8 +26,8 @@ Harmonic interval training with buttons, not radio buttons
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<title>Harmonic Interval Quiz: Button Style</title>
-<h1>Button Style Harmonic Interval Training</h1>
+<title>Harmonic Interval Training</title>
+<h1>Harmonic Interval Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
 <button onclick="playAgain()">Click to hear interval</button><br><br>
@@ -45,6 +45,7 @@ Harmonic interval training with buttons, not radio buttons
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="11" value="M7" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="12" value="P8" /><br>
 
+<p></p>
 <div id="nextButton"><button onclick="next()">Next</button></div>
 
 <script src="base.js"></script>
@@ -75,7 +76,7 @@ Harmonic interval training with buttons, not radio buttons
   function next() {
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 12 + 1);
-    playAgain(); 
+    setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");
     $(".ansChoice").removeClass("rightButton");
     $(".ansChoice").prop('disabled', false);

@@ -10,6 +10,13 @@ h1 {
   text-align: center
 }
 
+h2 {
+  color: navy;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 30px; 
+  text-align: center
+}
+
 p {
   color: black;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;

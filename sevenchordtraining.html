@@ -27,8 +27,8 @@ TODO: add basic 7 chords, or just all of them or none
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<title>Chord Quiz: Button Style</title>
-<h1>Button Style Chord Training</h1>
+<title>Seventh Chord Training</title>
+<h1>Seventh Chord Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
 <button onclick="playAgain()">Click to hear chord</button><br><br>
@@ -36,8 +36,8 @@ TODO: add basic 7 chords, or just all of them or none
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="Dominant 7th" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="Major 7th" />
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="Minor 7th" /> 
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="Half Diminished 7th" /><br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Diminished 7th" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Half Diminished 7th" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="Diminished 7th" />
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="6" value="Minor Major 7th" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="Augmented Major 7th" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="8" value="Augmented 7th" /><br>
@@ -91,7 +91,7 @@ TODO: add basic 7 chords, or just all of them or none
   function next() {
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 8 + 1);
-    playAgain(); 
+    setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");
     $(".ansChoice").removeClass("rightButton");
     $(".ansChoice").prop('disabled', false);
