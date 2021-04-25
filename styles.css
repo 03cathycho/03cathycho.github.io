@@ -7,28 +7,44 @@ h1 {
   color: navy;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 55px; 
-  text-align: center
+  text-align: center;
 }
 
 h2 {
   color: navy;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 30px; 
-  text-align: center
+  text-align: center;
 }
+
+h5 {
+  color: navy;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 24px; 
+  text-align: left;
+}
+
 
 p {
   color: black;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
-  font-size: 18px; 
+  font-size: 18px;
   text-align: left;
+}
+
+.description {
+  margin-top: -20px;
+  margin-top: 0px;
+  font-size: 13px;
+  color: white;
+  text-align: center;
 }
 
 /* CLICK TO HEAR AGAIN, NEXT BUTTON*/
 button {
+  padding: 5px 15px;
   display: inline-block;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
-  padding: 5px 15px;
   font-size: 12px; 
   cursor: pointer;
   text-align: center; 
@@ -86,4 +102,20 @@ a {
 
 a:hover {
   background-color: black;
+}
+
+.course {
+  background-color:navy;
+  text-align: center;
+  margin: none;
+  border: none;
+  color: none;
+  padding: none;
+  text-decoration: none;
+  display: inline-block;
+  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-size: 20px;
+  box-shadow: 0 9px #999;
+  cursor: pointer;
+  border-radius: 0;
 }

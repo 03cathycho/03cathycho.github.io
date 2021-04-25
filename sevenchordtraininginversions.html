@@ -103,9 +103,10 @@ TODO: add basic 7 chords, or just all of them or none
   }
 
   function next() {
+    $("#nextButton").hide();
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(0, chords.length);
-    playAgain();
+    setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");
     $(".ansChoice").removeClass("rightButton");
     $(".ansChoice").prop('disabled', false);

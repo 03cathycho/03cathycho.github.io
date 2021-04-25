@@ -72,18 +72,22 @@ use special class from button (jQuery add, remove in js- define style of the cla
   function submit(clicked_id) {
     if (clicked_id == answer) {   
       $("#nextButton").show(); 
+      // console.log("show cuz correct");
       score++;
       $("#insertScore").html(score);
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
       } else {
       $("#nextButton").hide(); 
+      // console.log("hide cuz wrong");
       $("body").find('#' + clicked_id).addClass("wrongButton");
       $("body").find('#' + clicked_id).prop('disabled', true);
     }
   }
 
   function next() {
+    // console.log("next button was clicked");
+    $("#nextButton").hide();
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 12 + 1);
     setTimeout(function() {playAgain() }, 1000);

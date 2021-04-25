@@ -42,6 +42,7 @@ TODO: add basic 7 chords, or just all of them or none
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="Augmented Major 7th" /><br>
 <input class="ansChoice" type="button" onclick="submit(this.id)" id="8" value="Augmented 7th" /><br>
 
+<p></p>
 <div id="nextButton"><button onclick="next()">Next</button></div>
 
 <script src="base.js"></script>
@@ -89,6 +90,7 @@ TODO: add basic 7 chords, or just all of them or none
   }
 
   function next() {
+    $("#nextButton").hide();
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 8 + 1);
     setTimeout(function() {playAgain() }, 1000);

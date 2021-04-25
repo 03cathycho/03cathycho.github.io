@@ -78,6 +78,7 @@ index.html file to link all the files together
   }
 
   function next() {
+    $("#nextButton").hide();
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
     answer = getRndInteger(1, 4 + 1);
     setTimeout(function() {playAgain() }, 1000);

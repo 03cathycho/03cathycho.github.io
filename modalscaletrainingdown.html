@@ -91,8 +91,9 @@ index.html file to link all the files together
   }
 
   function next() {
+    $("#nextButton").hide();
     noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
-    answer = getRndInteger(1, scales.length);
+    answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");
     $(".ansChoice").removeClass("rightButton");
