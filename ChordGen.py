@@ -71,7 +71,7 @@ def makeHTML(day,chords,breaks):
     f.write('</title><h1>Chord Training: ')
     f.write("Day " + str(day))
 
-    f.write('</h1><p>Current score: <text id="insertScore"></text></p><button onclick="playAgain()">Click to hear interval</button><br><br>')
+    f.write('</h1><p>Current score: <text id="insertScore"></text></p><button onclick="playAgain()">Click to hear chord</button><br><br>')
 
     for i in range(len(chords)):
         f.write('<input class="ansChoice" type="button" onclick="submit(this.id)" id="' + str(i) + '" value="' + n[chords[i]] + '" />')
