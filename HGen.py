@@ -11,7 +11,7 @@ f = open(fileName,"w")
 f.write('<!DOCTYPE html>' +
 '<html>' +
 '<body>' +
-'<head>' +
+'<head><link rel="shortcut icon" type="image/x-icon" href="favicon.png">' +
 '  <link rel="stylesheet" href="styles.css">' +
 '  <meta http-equiv="content-type" content="text/html; charset=utf-8" />' +
 '  <!-- polyfill -->' +
