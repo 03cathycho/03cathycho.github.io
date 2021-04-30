@@ -30,8 +30,8 @@ index.html file to link all the files together
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<title>Melodic Interval Training: P4, P5, P8</title>
-<h1>Melodic Interval Training: P4, P5, P8</h1>
+<title>Melodic Interval: P4, P5, P8</title>
+<h1>Melodic Interval: P4, P5, P8</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
 <button onclick="playAgain()">Click to hear interval</button><br><br>
@@ -59,20 +59,20 @@ index.html file to link all the files together
 
   var delay = 0.05; // play one note every quarter second
   var velocity = 90; // how hard the note hits
-  var score = 0;
+  var score = 0;var total = 0;var firstTime = true;
   var playDuration = 0.75;
 
   function submit(clicked_id) {
     if (clicked_id == answer) {   
       $("#nextButton").show(); 
-      score++;
-      $("#insertScore").html(score);
+      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+      
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
       } else {
       $("#nextButton").hide(); 
       $("body").find('#' + clicked_id).addClass("wrongButton");
-      $("body").find('#' + clicked_id).prop('disabled', true);
+      $("body").find('#' + clicked_id).prop('disabled', true);if (firstTime == true) {total++;firstTime = false;}$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
     }
   }
 

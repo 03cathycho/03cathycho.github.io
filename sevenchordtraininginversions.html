@@ -87,19 +87,19 @@ TODO: add basic 7 chords, or just all of them or none
   var answer = getRndInteger(0, chords.length);
   var delay = 0.05; // play one note every quarter second
   var velocity = 90; // how hard the note hits
-  var score = 0;
+  var score = 0;var total = 0;var firstTime = true;
 
   function submit(clicked_id) {
     if (clicked_id == answer || (clicked_id == 16 && (answer == 17 || answer == 18 || answer == 19))) {
       $("#nextButton").show();
-      score++;
-      $("#insertScore").html(score);
+      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+      
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
       } else {
       $("#nextButton").hide();
       $("body").find('#' + clicked_id).addClass("wrongButton");
-      $("body").find('#' + clicked_id).prop('disabled', true);
+      $("body").find('#' + clicked_id).prop('disabled', true);if (firstTime == true) {total++;firstTime = false;}$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
     }
   }
 

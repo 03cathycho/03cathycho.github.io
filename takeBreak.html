@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+<title>Take a break!</title>
+<h1>Take a break!</h1>
+<p>Here, take a look at a dog:</p>
+<img id="myPicture" alt="some image">
+
+<script>
+	window.onload = choosePic;
+
+	var myPix = new Array("/images/dog1.jpg","/images/dog2.jpg","/images/dog3.jpg");
+
+	function choosePic() {
+	     var randomNum = Math.floor(Math.random() * myPix.length);
+	     document.getElementById("myPicture").src = myPix[randomNum];
+	}
+</script>
+
+</body>
+</html>

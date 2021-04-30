@@ -65,7 +65,7 @@ use special class from button (jQuery add, remove in js- define style of the cla
 
   var delay = 0; // play one note every quarter second
   var velocity = 90; // how hard the note hits
-  var score = 0;
+  var score = 0;var total = 0;var firstTime = true;
   var playDuration = 0.75;
   var colorCorrect = "green";
   var colorWrong = "red";
@@ -74,15 +74,15 @@ use special class from button (jQuery add, remove in js- define style of the cla
     if (clicked_id == answer) {   
       $("#nextButton").show(); 
       // console.log("show cuz correct");
-      score++;
-      $("#insertScore").html(score);
+      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+      
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
       } else {
       $("#nextButton").hide(); 
       // console.log("hide cuz wrong");
       $("body").find('#' + clicked_id).addClass("wrongButton");
-      $("body").find('#' + clicked_id).prop('disabled', true);
+      $("body").find('#' + clicked_id).prop('disabled', true);if (firstTime == true) {total++;firstTime = false;}$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
     }
   }
 

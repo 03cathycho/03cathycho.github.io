@@ -1,10 +1,10 @@
-arr = [1, 2, 5, 6, 7, 10, 11, 12]
+arr = [1, 2]
 nameRef = ['U','m2','M2','m3','M3','P4','TT','P5','m6','M6','m7','M7','P8']
 arrNames = []
 for i in arr:
     arrNames.append(nameRef[i])
 
-fileName = "melodicinterval12567abc.html"
+fileName = "melodicinterval12.html"
 f = open(fileName,"x")
 f.close()
 f = open(fileName,"w")
@@ -30,7 +30,7 @@ f.write('<!DOCTYPE html>' +
 '  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>' +
 '  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>' +
 '</head>' +
-'<title>Melodic Interval Training: ')
+'<title>Melodic Interval: ')
 
 
 for i in range(len(arrNames)):
@@ -39,7 +39,7 @@ for i in range(len(arrNames)):
     else:
         f.write(arrNames[i])
 
-f.write('</title><h1>Melodic Interval Training: ')
+f.write('</title><h1>Melodic Interval: ')
 
 for i in range(len(arrNames)):
     if i != len(arrNames)-1:
