@@ -77,6 +77,8 @@ index.html file to link all the files together
   var score = 0;var total = 0;var firstTime = true;
   var playDuration = 0.75;
 
+  var prevNoteBass; //update
+
   function submit(clicked_id) {
     if (clicked_id == answer) {   
       $("#nextButton").show(); 
@@ -92,8 +94,11 @@ index.html file to link all the files together
   }
 
   function next() {
+    // MIDI.stopAllNotes();
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+
     answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000); 
     $(".ansChoice").removeClass("wrongButton");
@@ -102,6 +107,7 @@ index.html file to link all the files together
   }
 
   function playAgain() {
+    // MIDI.stopAllNotes();
     var i = 0;
     var timeCount = 0;
     for (var i = 0; i < scales[answer].length; i++) {

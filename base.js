@@ -12,15 +12,18 @@ window.onload = function () {
   });
 };
 
-function getRndInteger(min, max) {
-  x = Math.floor(Math.random() * (max - min)) + min;
-  return x;
-  // var x = previous;
-  // while (x == previous) {
-  //   x = Math.floor(Math.random() * (max - min)) + min;
-  // }
-  // previous = x;
-  // return x;
+function getRndInteger(min, max, excludeNum) {
+  if (excludeNum == undefined) {
+    x = Math.floor(Math.random() * (max - min)) + min;
+    return x;
+  } else {
+    var x = excludeNum;
+    while (x == excludeNum) {
+      x = Math.floor(Math.random() * (max - min)) + min;
+    }
+    excludeNum = x;
+    return x;
+  }
 }
 
 // function getRndIntegerArray(int[] array) {

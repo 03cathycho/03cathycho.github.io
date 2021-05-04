@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <!-- polyfill -->
+  <script src="/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+  <!-- midi.js package -->
+  <script src="/js/midi/audioDetect.js" type="text/javascript"></script>
+  <script src="/js/midi/gm.js" type="text/javascript"></script>
+  <script src="/js/midi/loader.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <script src="/js/midi/player.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
+  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<title>Harmonic Dictation: Day 1, Ex. 1</title>
+<h1>Harmonic Dictation: Day 1, Ex. 1</h1>
+
+<p>Copy down this prompt:</p>
+<img src="/harmonicday1aprompt.png" alt="Harmonic Day 1, Ex. 1" width="100" height="140">
+
+<p>Listen to the prompt:</p>
+<audio controls>
+  <source src="/harmonicday1a.mp3" type="audio/mp3">  <!-- TODO: make rests, make the outer voices louder? -->
+Your browser does not support the audio element.
+</audio>
+
+<p>Check your work:</p>
+<input id="button" type="button" onclick="submit()" value="Click to reveal answer" />
+<img style="visibility: hidden;" id="answer" alt="Harmonic Day 1, Ex. 1" width="570" height="150">
+
+<script>
+  function submit() {
+    $("#answer").attr("src","/harmonicday1a.png");
+    $("#answer").attr("style","visibility: visible");
+    $("#button").hide();
+  }
+</script>
+
+</body>
+</html>
