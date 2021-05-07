@@ -67,6 +67,7 @@ TO RUN: http://localhost:8000/ -> http://localhost:8000/intervalsquiz.html
   var delay = 0.05; // play one note every quarter second
   var velocity = 90; // how hard the note hits
   var score = 0;var total = 0;var firstTime = true;
+  var prevNoteBass; 
 
   window.onload = function () {
     MIDI.loadPlugin({
@@ -102,7 +103,10 @@ TO RUN: http://localhost:8000/ -> http://localhost:8000/intervalsquiz.html
   }
 
   function next() {
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+    $("#nextButton").hide();
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     answer = getRndInteger(1, 12 + 1); 
     MIDI.chordOn(0, [noteBass, noteBass + answer], velocity, delay);
     MIDI.chordOff(0, [noteBass, noteBass + answer], delay + 1.5);

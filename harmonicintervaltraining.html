@@ -59,6 +59,7 @@ Harmonic interval training with buttons, not radio buttons
   var delay = 0.05; // play one note every quarter second
   var velocity = 90; // how hard the note hits
   var score = 0;var total = 0;var firstTime = true;
+  var prevNoteBass; 
 
   function submit(clicked_id) {
     if (clicked_id == answer) {   
@@ -76,7 +77,9 @@ Harmonic interval training with buttons, not radio buttons
 
   function next() {
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     answer = getRndInteger(1, 12 + 1);
     setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");

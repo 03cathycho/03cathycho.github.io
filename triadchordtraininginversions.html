@@ -52,6 +52,7 @@ TODO: add basic 7 chords, or just all of them or none
 <script src="base.js"></script>
 
 <script>
+  var prevNoteBass; 
   var chords = [
   [0, 4, 7], // Maj
   [0, 3, 8], // inv1
@@ -91,8 +92,11 @@ TODO: add basic 7 chords, or just all of them or none
   }
 
   function next() {
-    $("#nextButton").hide(); 
-3    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+    $("#nextButton").hide();
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
+
     answer = getRndInteger(0, chords.length - 1);
     setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");

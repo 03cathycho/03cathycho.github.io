@@ -12,14 +12,21 @@
 <img id="myPicture" alt="some image">
 
 <script>
+	var previousNum;
+	
 	window.onload = choosePic;
 
 	var myPix = new Array("/images/dog1.jpg","/images/dog2.jpg","/images/dog3.jpg");
 
 	function choosePic() {
 	     var randomNum = Math.floor(Math.random() * myPix.length);
+	     // while (randomNum == previousNum) {
+	     // 	x = Math.floor(Math.random() * (max - min)) + min;
+	     // }
+	     // previousNum = randomNum;
 	     document.getElementById("myPicture").src = myPix[randomNum];
 	}
+
 </script>
 
 </body>

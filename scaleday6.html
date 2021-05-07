@@ -44,6 +44,7 @@
   [0, 2, 4, 5, 7, 9, 10, 12, 10, 9, 7, 5, 4, 2, 0],  // Mixolydian
   [0, 2, 4, 6, 7, 9, 11, 12, 11, 9, 7, 6, 4, 2, 0] // Lydian
   ];
+  var prevNoteBass; 
 
   var startRange = 57; //57 = A4
   var endRange = 69; //69 = A5
@@ -71,7 +72,10 @@
 
   function next() {
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
+    
     answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000); 
     $(".ansChoice").removeClass("wrongButton");

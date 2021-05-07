@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <!-- polyfill -->
+  <script src="/inc/shim/Base64.js" type="text/javascript"></script>
+  <script src="/inc/shim/Base64binary.js" type="text/javascript"></script>
+  <script src="/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+  <!-- midi.js package -->
+  <script src="/js/midi/audioDetect.js" type="text/javascript"></script>
+  <script src="/js/midi/gm.js" type="text/javascript"></script>
+  <script src="/js/midi/loader.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
+  <script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
+  <!-- utils -->
+  <script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
+  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<title>Customizable Melodic Interval Training</title>
+<h1>Customizable Melodic Interval Training</h1>
+
+<p>Current score: <text id="insertScore"></text></p>
+<button onclick="playAgain()">Click to hear interval</button>
+<p>A new interval will be generated when you click on a checkbox.</p>
+
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="0" value="m2" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="M2" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="m3" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="M3" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="P4" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="TT" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="6" value="P5" /><br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="m6" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="8" value="M6" /> <br>
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="9" value="m7" /> 
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="10" value="M7" />
+<input class="ansChoice" type="button" onclick="submit(this.id)" id="11" value="P8" /><br>
+
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="0" name="=m2"/>
+<label for="m2">m2</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="1" name="M2"/>
+<label for="M2">M2</label><br>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="2" name="m3"/>
+<label for="m3">m3</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="3" name="M3"/>
+<label for="M3">M3</label><br>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="4" name="P4"/>
+<label for="P4">P4</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="5" name="TT"/>
+<label for="TT">TT</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="6" name="P5"/>
+<label for="P5">P5</label><br>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="7" name="m6"/>
+<label for="m6">m6</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="8" name="M6"/>
+<label for="M6">M6</label><br>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="9" name="m7"/>
+<label for="m7">m7</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="10" name="M7"/>
+<label for="M7">M7</label>
+<input class="checkbox" type="checkbox" onclick="check(this.id)" id="11" name="P8"/>
+<label for="P8">P8</label>
+
+<div id="nextButton"><button onclick="next()">Next</button></div>
+
+<script src="base.js"></script>
+
+<script>
+  var playDuration = 0.75;
+  var prevNoteBass;
+  var chords = [
+  [0,1],
+  [0,2],
+  [0,3],
+  [0,4], 
+  [0,5],
+  [0,6],
+  [0,7],
+  [0,8],
+  [0,9],
+  [0,10],
+  [0,11],
+  [0,12]
+  ];
+
+  var checkbox = [false,false,false,false,false,
+  false,false,false,false,false,
+  false,false];
+
+  var chord;
+  var startRange = 57; //57 = A4
+  var endRange = 69; //69 = A5
+  var noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+  var answer = getRndChord(checkbox);
+  var delay = 0.05; // play one note every quarter second
+  var velocity = 90; // how hard the note hits
+  var score = 0;var total = 0;var firstTime = true;
+
+  window.onload = function () {
+    $("#nextButton").hide();
+    $(".ansChoice").hide();
+    console.log("its hiding cuz it loaded");
+    MIDI.loadPlugin({
+      soundfontUrl: "./soundfont/",
+      instrument: "acoustic_grand_piano",
+      onprogress: function(state, progress) {
+        console.log(state, progress);
+      },
+    });
+  };
+
+  function getRndChord(checkbox) {
+    var numTrue = 0;
+    for (var i = 0; i < checkbox.length; i++)
+      if (checkbox[i])
+        numTrue++;
+
+    if (numTrue == 0)
+      return getRndInteger(0, checkbox.length);
+
+    var rand = Math.floor(Math.random() * numTrue);
+    for (var i = 0; i < checkbox.length; i++) {
+      if (checkbox[i]) {
+        if (rand == 0) {
+          return i;
+        }
+        rand--;
+      }
+    }
+    return getRndInteger(0, checkbox.length);
+  }
+
+  function submit(clicked_id) {
+    if (clicked_id == answer) {
+      $("#nextButton").show();
+      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+
+      $("body").find('#' + clicked_id).addClass("rightButton");
+      $(".ansChoice").prop('disabled', true);
+      } else {
+      $("#nextButton").hide();
+      $("body").find('#' + clicked_id).addClass("wrongButton");
+      $("body").find('#' + clicked_id).prop('disabled', true);if (firstTime == true) {total++;firstTime = false;}$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+    }
+  }
+
+  function check(id) {
+    checkbox[id] = !checkbox[id];
+    if (checkbox[id])
+      $("body").find('#' + id).show();
+    else
+      $("body").find('#' + id).hide();
+    nextNoPlay();
+  }
+
+  function next() {
+    $("#nextButton").hide();
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
+
+    answer = getRndChord(checkbox);
+    setTimeout(function() {playAgain() }, 1000);
+    $(".ansChoice").removeClass("wrongButton");
+    $(".ansChoice").removeClass("rightButton");
+    $(".ansChoice").prop('disabled', false);
+  }
+
+  function nextNoPlay() {
+    $("#nextButton").hide();
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
+
+    answer = getRndChord(checkbox);
+    $(".ansChoice").removeClass("wrongButton");
+    $(".ansChoice").removeClass("rightButton");
+    $(".ansChoice").prop('disabled', false);
+  }
+
+  function playAgain() {
+    var i = 0;
+    var timeCount = 0;
+    for (var i = 0; i < chords[answer].length; i++) {
+      MIDI.noteOn(0, noteBass + chords[answer][i], velocity, delay + playDuration * timeCount);
+      MIDI.noteOff(0, noteBass + chords[answer][i], delay + playDuration * (timeCount + 1));
+      timeCount++;
+    }
+  }
+
+</script>
+
+</body>
+</html>

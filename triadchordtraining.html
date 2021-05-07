@@ -45,6 +45,7 @@ TODO: add basic 7 chords, or just all of them or none
 <script src="base.js"></script>
 
 <script>
+  var prevNoteBass; 
   var startRange = 57; //57 = A4
   var endRange = 69; //69 = A5
   var noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
@@ -71,7 +72,9 @@ TODO: add basic 7 chords, or just all of them or none
 
   function next() {
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     intervalA = getRndInteger(3, 4 + 1);
     intervalB = getRndInteger(3, 4 + 1)
     answer = "" + intervalA + intervalB;

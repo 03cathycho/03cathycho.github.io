@@ -51,6 +51,7 @@ index.html file to link all the files together
   [0, 7], // P5
   [0, 12] // P8
   ]
+  var prevNoteBass; 
 
   var startRange = 57; //57 = A4
   var endRange = 69; //69 = A5
@@ -78,7 +79,9 @@ index.html file to link all the files together
 
   function next() {
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000); 
     $(".ansChoice").removeClass("wrongButton");

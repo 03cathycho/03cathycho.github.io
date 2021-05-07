@@ -69,6 +69,7 @@ use special class from button (jQuery add, remove in js- define style of the cla
   var playDuration = 0.75;
   var colorCorrect = "green";
   var colorWrong = "red";
+  var prevNoteBass; 
 
   function submit(clicked_id) {
     if (clicked_id == answer) {   
@@ -87,9 +88,10 @@ use special class from button (jQuery add, remove in js- define style of the cla
   }
 
   function next() {
-    // console.log("next button was clicked");
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     answer = getRndInteger(1, 12 + 1);
     setTimeout(function() {playAgain() }, 1000);
     $(".ansChoice").removeClass("wrongButton");

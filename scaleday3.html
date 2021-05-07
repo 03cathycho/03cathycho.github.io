@@ -46,7 +46,7 @@
   [0, 2, 3, 5, 7, 8, 11, 12, 11, 8, 7, 5, 3, 2, 0],  // Harm min
   [0, 2, 3, 5, 7, 9, 11, 12, 10, 8, 7, 5, 3, 2, 0] // Mel min
 
-  ];
+  ];var prevNoteBass; 
 
   var startRange = 57; //57 = A4
   var endRange = 69; //69 = A5
@@ -74,7 +74,9 @@
 
   function next() {
     $("#nextButton").hide();
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
+
+    noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
     answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000); 
     $(".ansChoice").removeClass("wrongButton");

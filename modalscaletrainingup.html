@@ -98,6 +98,7 @@ index.html file to link all the files together
     $("#nextButton").hide();
 
     noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
+    prevNoteBass = noteBass;
 
     answer = getRndInteger(0, scales.length);
     setTimeout(function() {playAgain() }, 1000); 
