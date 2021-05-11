@@ -13,6 +13,7 @@
 		var useStreamingBuffer = false; // !!audioContext.createMediaElementSource;
 		var midi = root.WebAudio = {api: 'webaudio'};
 		var ctx; // audio context
+        var off_sources = [];
 		var sources = {};
 		var effects = {};
 		var masterVolume = 127;
@@ -70,9 +71,9 @@
 			}
 
 			/// convert relative delay to absolute delay
-			if (delay < ctx.currentTime) {
+			//if (delay < ctx.currentTime) {
 				delay += ctx.currentTime;
-			}
+			//}
 		
 			/// create audio buffer
 			if (useStreamingBuffer) {
@@ -104,14 +105,21 @@
 				if (delay) {
 					return setTimeout(function() {
 						buffer.currentTime = 0;
-						buffer.play()
+                        console.log("dbuffer play", d.getTime());
+						buffer.play();
+                        console.log("dbuffer played", d.getTime());
 					}, delay * 1000);
 				} else {
 					buffer.currentTime = 0;
-					buffer.play()
+                    console.log("buffer play", d.getTime());
+					buffer.play();
+                    console.log("buffer played", d.getTime());
 				}
 			} else {
+                var d = new Date();
+                console.log(delay, "3buffer play", d.getTime());
 				source.start(delay || 0);
+                console.log(delay, "4buffer play", d.getTime());
 			}
 			///
 			sources[channelId + '' + noteId] = source;
@@ -128,9 +136,9 @@
 			var bufferId = instrument + '' + noteId;
 			var buffer = audioBuffers[bufferId];
 			if (buffer) {
-				if (delay < ctx.currentTime) {
+				//if (delay < ctx.currentTime) {
 					delay += ctx.currentTime;
-				}
+				//}
 				///
 				var source = sources[channelId + '' + noteId];
 				if (source) {
@@ -159,6 +167,7 @@
 						}
 					}
 					///
+                    off_sources.push(source);
 					delete sources[channelId + '' + noteId];
 					///
 					return source;
@@ -189,8 +198,8 @@
 					delay += ctx.currentTime;
 				}
 				var source = sources[sid];
-				source.gain.linearRampToValueAtTime(1, delay);
-				source.gain.linearRampToValueAtTime(0, delay + 0.3);
+				source.gainNode.gain.linearRampToValueAtTime(1, delay);
+				source.gainNode.gain.linearRampToValueAtTime(0, delay + 0.3);
 				if (source.noteOff) { // old api
 					source.noteOff(delay + 0.3);
 				} else { // new api
@@ -198,6 +207,42 @@
 				}
 				delete sources[sid];
 			}
+            //These are the notes for which noteOff was already called previously, but we still want to stop them immediately
+            while(off_sources.length>0) {
+                var source = off_sources.pop();
+                var delay = 0;
+                if (delay < ctx.currentTime) delay += ctx.currentTime;
+				if (source.gainNode) {
+					// @Miranet: 'the values of 0.2 and 0.3 could of course be used as 
+					// a 'release' parameter for ADSR like time settings.'
+					// add { 'metadata': { release: 0.3 } } to soundfont files
+					var gain = source.gainNode.gain;
+					//gain.linearRampToValueAtTime(gain.value, delay);
+					//gain.linearRampToValueAtTime(0, delay + 0.3);
+                    source.gainNode.gain.value=0;
+				}
+				///
+				if (useStreamingBuffer) {
+					if (delay) {
+						setTimeout(function() {
+							buffer.pause();
+						}, delay * 1000);
+					} else {
+						buffer.pause();
+					}
+				} else {
+                    try {
+					    if (source.noteOff) {
+						    source.noteOff();
+					    } else {
+						    source.stop();
+					    }
+                    }
+                    catch (InvalidStateErrorException) {
+                    }
+				}
+                
+            }
 		};
 
 		midi.setEffects = function(list) {

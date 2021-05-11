@@ -70,6 +70,7 @@ index.html file to link all the files together
       
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
+      MIDI.stopAllNotes();
       } else {
       $("#nextButton").hide(); 
       $("body").find('#' + clicked_id).addClass("wrongButton");
@@ -78,6 +79,7 @@ index.html file to link all the files together
   }
 
   function next() {
+    MIDI.stopAllNotes();
     $("#nextButton").hide();
 
     noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
@@ -90,6 +92,7 @@ index.html file to link all the files together
   }
 
   function playAgain() {
+    MIDI.stopAllNotes();
     var i = 0;
     var timeCount = 0;
     for (var i = 0; i < scales[answer].length; i++) {

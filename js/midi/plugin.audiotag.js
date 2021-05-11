@@ -76,6 +76,7 @@
 		midi.pitchBend = function(channel, program, delay) { };
 
 		midi.noteOn = function(channel, note, velocity, delay) {
+            console.log("d2buffer play", d.getTime());
 			var id = noteToKey[note];
 			if (!notes[id]) return;
 			if (delay) {

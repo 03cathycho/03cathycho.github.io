@@ -55,10 +55,12 @@
 	};
 
 	midi.stopAllNotes = function() {
-		output.cancel();
-		for (var channel = 0; channel < 16; channel ++) {
-			output.send([0xB0 + channel, 0x7B, 0]);
-		}
+        if(output) {
+		    output.cancel();
+		    for (var channel = 0; channel < 16; channel ++) {
+			    output.send([0xB0 + channel, 0x7B, 0]);
+		    }
+        }
 	};
 
 	midi.connect = function(opts) {

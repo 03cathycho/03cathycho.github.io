@@ -65,6 +65,7 @@
       
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
+      MIDI.stopAllNotes();
       } else {
       $("#nextButton").hide(); 
       $("body").find('#' + clicked_id).addClass("wrongButton");
@@ -73,6 +74,7 @@
   }
 
   function next() {
+    MIDI.stopAllNotes();
     $("#nextButton").hide();
 
     noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
@@ -85,6 +87,7 @@
   }
 
   function playAgain() {
+    MIDI.stopAllNotes();
     var i = 0;
     var timeCount = 0;
     for (var i = 0; i < scales[answer].length; i++) {

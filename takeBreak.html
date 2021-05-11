@@ -9,21 +9,42 @@
 <title>Take a break!</title>
 <h1>Take a break!</h1>
 <p>Here, take a look at a dog:</p>
-<img id="myPicture" alt="some image">
+<button onclick="choosePic()">Click to see another dog</button><br><br>
+<img id="myPicture" alt="some image" width="500" height="500">
 
 <script>
 	var previousNum;
 	
 	window.onload = choosePic;
 
-	var myPix = new Array("/images/dog1.jpg","/images/dog2.jpg","/images/dog3.jpg");
+	var myPix = new Array(
+		"/images/dog1.jpg",
+		"/images/dog2.jpg",
+		"/images/dog3.jpg",
+		"/images/dog4.jpg",
+		"/images/dog5.jpg",
+		"/images/dog6.jpg",
+		"/images/dog7.jpg",
+		"/images/dog8.jpg",
+		"/images/dog9.jpg",
+		"/images/dog10.jpg"
+		// "/images/dog11.jpg",
+		// "/images/dog12.jpg",
+		// "/images/dog13.jpg",
+		// "/images/dog14.jpg",
+		// "/images/dog15.jpg",
+		// "/images/dog16.jpg",
+		// "/images/dog17.jpg",
+		// "/images/dog18.jpg"
+		);
 
 	function choosePic() {
+		console.log("clicked");
 	     var randomNum = Math.floor(Math.random() * myPix.length);
-	     // while (randomNum == previousNum) {
-	     // 	x = Math.floor(Math.random() * (max - min)) + min;
-	     // }
-	     // previousNum = randomNum;
+	     while (randomNum == previousNum) {
+	     	randomNum = Math.floor(Math.random() * myPix.length);
+	     }
+	     previousNum = randomNum;
 	     document.getElementById("myPicture").src = myPix[randomNum];
 	}
 

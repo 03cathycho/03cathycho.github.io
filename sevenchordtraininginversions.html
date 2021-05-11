@@ -97,6 +97,7 @@ TODO: add basic 7 chords, or just all of them or none
       
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);
+      MIDI.stopAllNotes();
       } else {
       $("#nextButton").hide();
       $("body").find('#' + clicked_id).addClass("wrongButton");
@@ -105,6 +106,7 @@ TODO: add basic 7 chords, or just all of them or none
   }
 
   function next() {
+    MIDI.stopAllNotes();
     $("#nextButton").hide();
 
     noteBass = getRndInteger(startRange, endRange + 1, prevNoteBass); //C4-B4 //UPDATE!
@@ -118,6 +120,7 @@ TODO: add basic 7 chords, or just all of them or none
   }
 
   function playAgain() {
+    MIDI.stopAllNotes();
     chord = chords[answer].slice();
     for (var i = 0; i < chord.length; i++) {
       chord[i] += noteBass;
