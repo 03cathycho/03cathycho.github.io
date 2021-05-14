@@ -28,38 +28,36 @@
 <h1>Customizable Scale Training</h1>
 
 <p>Current score: <text id="insertScore"></text></p>
-<button onclick="playAgain()">Click to hear scale</button>
+<button id="hearAgain">Click to hear scale</button>
 <p>A new scale will be generated when you click on a checkbox.</p>
 
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="0" value="Major (Ionian)" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="Natural Minor (Aeolian)" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="Harmonic Minor" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="Melodic Minor" /><br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Dorian" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="Phrygian" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="6" value="Lydian" /><br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="Mixolydian" />
-
-
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="0" name="=Major (Ionian)"/>
-<label for="Major (Ionian)">Major (Ionian)</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="1" name="Natural Minor (Aeolian)"/>
-<label for="Natural Minor (Aeolian)">Natural Minor (Aeolian)</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="2" name="Harmonic Minor"/>
-<label for="Harmonic Minor">Harmonic Minor</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="3" name="Melodic Minor"/>
-<label for="Melodic Minor">Melodic Minor</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="4" name="Dorian"/>
-<label for="Dorian">Dorian</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="5" name="Phrygian"/>
-<label for="Phrygian">Phrygian</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="6" name="Lydian"/>
-<label for="Lydian">Lydian</label><br>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="7" name="Mixolydian"/>
-<label for="Mixolydian">Mixolydian</label><br>
-
+<input class="ansChoice" type="button" id="0" value="Major (Ionian)" />
+<input class="ansChoice" type="button" id="1" value="Natural Minor (Aeolian)" />
+<input class="ansChoice" type="button" id="2" value="Harmonic Minor" />
+<input class="ansChoice" type="button" id="3" value="Melodic Minor" /><br>
+<input class="ansChoice" type="button" id="4" value="Dorian" />
+<input class="ansChoice" type="button" id="5" value="Phrygian" />
+<input class="ansChoice" type="button" id="6" value="Lydian" /><br>
+<input class="ansChoice" type="button" id="7" value="Mixolydian" />
 
 <div id="nextButton"><button onclick="next()">Next</button></div>
+
+<input class="checkbox" type="checkbox" id="0" name="=Major (Ionian)"/>
+<label for="Major (Ionian)">Major (Ionian)</label><br>
+<input class="checkbox" type="checkbox" id="1" name="Natural Minor (Aeolian)"/>
+<label for="Natural Minor (Aeolian)">Natural Minor (Aeolian)</label><br>
+<input class="checkbox" type="checkbox" id="2" name="Harmonic Minor"/>
+<label for="Harmonic Minor">Harmonic Minor</label><br>
+<input class="checkbox" type="checkbox" id="3" name="Melodic Minor"/>
+<label for="Melodic Minor">Melodic Minor</label><br>
+<input class="checkbox" type="checkbox" id="4" name="Dorian"/>
+<label for="Dorian">Dorian</label><br>
+<input class="checkbox" type="checkbox" id="5" name="Phrygian"/>
+<label for="Phrygian">Phrygian</label><br>
+<input class="checkbox" type="checkbox" id="6" name="Lydian"/>
+<label for="Lydian">Lydian</label><br>
+<input class="checkbox" type="checkbox" id="7" name="Mixolydian"/>
+<label for="Mixolydian">Mixolydian</label><br>
 
 <script src="base.js"></script>
 
@@ -90,6 +88,15 @@
   var score = 0;var total = 0;var firstTime = true;
 
   window.onload = function () {
+    $(".ansChoice").click(function () {
+      submit(this.id);
+    });
+    $("#hearAgain").click(function () {
+      playAgain();
+    });
+    $(".checkbox").click(function () {
+      check(this.id);
+    });
     $("#nextButton").hide();
     $(".ansChoice").hide();
     console.log("its hiding cuz it loaded");

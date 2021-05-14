@@ -28,25 +28,26 @@
 <h1>Melodic Dictation: Day 1, Ex. 1</h1>
 
 <p>Copy down this prompt:</p>
-<img src="/melodicday1aprompt.png" alt="Melodic Day 1, Ex. 1" width="125" height="100">
+<p>F Major, 4 bars:</p>
+<img src="/melodicday1aprompt.png" alt="Melodic Day 1, Ex. 1" width="10%">
 
-<p>Listen to the prompt:</p>
-<audio controls>
-  <source src="/melodicday1a.mp3" type="audio/mp3">  <!-- TODO: make rests -->
+<p>Press the button below to start the timed sequence of dictations:</p>
+<audio style="visibility: hidden;" id="prompt">
+  <source src="/melodicday1a.mp3" type="audio/mp3">  <!-- TODO: make rests, make the outer voices louder? -->
 Your browser does not support the audio element.
 </audio>
+<button class="startDictation" onclick="startDictation()" type="button">Start dictation</button>
+
+<p>Number of times played: <text id="insertScore"></text></p>
+<p>Time left until next recording: <text class="time" id="time">0 seconds</text></p>
 
 <p>Check your work:</p>
-<input id="button" type="button" onclick="submit()" value="Click to reveal answer" />
-<img style="visibility: hidden;" id="answer" alt="Melodic Day 1, Ex. 1" width="800" height="100">
+<input id="buttonShow" type="button" onclick="showPicture('/melodicday1a.png')" value="Click to reveal answer" />
+<input style="visibility: hidden;" id="buttonHide" type="button" onclick="hidePicture()" value="Click to hide answer" /><br><br>
 
-<script>
-  function submit() {
-    $("#answer").attr("src","/melodicday1a.png");
-    $("#answer").attr("style","visibility: visible");
-    $("#button").hide();
-  }
-</script>
+<img style="visibility: hidden;" id="answer" alt="melodic Day 1, Ex. 1" width="50%">
+
+<script src="dictation.js"></script>
 
 </body>
 </html>

@@ -40,6 +40,10 @@ p {
   text-align: center;
 }
 
+text.time {
+  color: red;
+}
+
 /* CLICK TO HEAR AGAIN, NEXT BUTTON*/
 button {
   padding: 5px 15px;

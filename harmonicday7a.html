@@ -28,10 +28,10 @@
 <h1>Harmonic Dictation: Day 7, Ex. 1</h1>
 
 <p>Copy down this prompt:</p>
-<p>G Minor, 3 bars:</p>
+<p>F Major, 3 bars:</p>
 <img src="/harmonicday7aprompt.png" alt="Harmonic Day 7, Ex. 1" width="10%">
 
-<p>Listen to the prompt:</p>
+<p>Press the button below to start the timed sequence of dictations:</p>
 <audio style="visibility: hidden;" id="prompt">
   <source src="/harmonicday7a.mp3" type="audio/mp3">  <!-- TODO: make rests, make the outer voices louder? -->
 Your browser does not support the audio element.
@@ -39,7 +39,7 @@ Your browser does not support the audio element.
 <button class="startDictation" onclick="startDictation()" type="button">Start dictation</button>
 
 <p>Number of times played: <text id="insertScore"></text></p>
-<p>Time left until next recording: <text id="time">00:00</text></p>
+<p>Time left until next recording: <text class="time" id="time">0 seconds</text></p>
 
 <p>Check your work:</p>
 <input id="buttonShow" type="button" onclick="showPicture('/harmonicday7a.png')" value="Click to reveal answer" />

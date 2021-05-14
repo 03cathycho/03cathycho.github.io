@@ -9,39 +9,18 @@ var x = document.getElementById("prompt");
 $("#insertScore").html(count);
 
 function startTimer(duration, display) {
-  var start = Date.now(),
-      diff,
-      minutes,
-      seconds;
+  var currentSec = duration;
   function timer() {
-      // get the number of seconds that have elapsed since 
-      // startTimer() was called
-      diff = duration - (((Date.now() - start) / 1000) | 0);
-
-      // does the same job as parseInt truncates the float
-      minutes = (diff / 60) | 0;
-      seconds = (diff % 60) | 0;
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds; 
-      console.log(minutes + ":" + seconds); 
-
-      if (diff <= 0) {
-          // add one second so that the count down starts at the full duration
-          // example 05:00 not 04:59
-          // display.textContent = "00:00";
-          // minutes = 0;
-          // seconds = 0;
-          // start = Date.now();
-          //HOW DO YOU BREAK WITHOUT BREAKING PROGRAM??
-          // return;
+      display.textContent = currentSec + " seconds"; 
+      console.log(currentSec); 
+      if (currentSec <= 0) {
+        clearInterval(myInterval);
       }
+      currentSec--;
   };
   // we don't want to wait a full second before the timer starts
   timer();
-  setInterval(timer, 1000);
+  var myInterval = setInterval(timer, 1000);
 }
 
 function showPicture(answer) {
@@ -67,6 +46,8 @@ function startDictation() {
   var recTime = Math.ceil(x.duration) * 1000;
 
   $(".startDictation"). attr("disabled", true);
+  $(".startDictation"). html("Dictation started");
+  // $(".startDictation").hide();
 
   //1st
   setTimeout(function() {playSound() }, 0);    
