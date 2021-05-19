@@ -1,6 +1,35 @@
+code,
+pre {
+  background: #eee;
+}
+
+code {
+  padding: 2px 4px;
+  vertical-align: text-bottom;
+}
+
+pre {
+  padding: 1em;
+}
+
+/*header img {
+  display: inline-block;
+  height: 120px;
+  vertical-align: top;
+  width: 120px;
+}*/
+
 html {
   background: #add8e6;
+
   /*background-size: cover;*/
+}
+
+body {
+  margin: 0 auto;
+  max-width: 60em;
+  font-family: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+
 }
 
 h1 {
@@ -46,19 +75,23 @@ text.time {
 
 /* CLICK TO HEAR AGAIN, NEXT BUTTON*/
 button {
+  /*vertical-align: middle;*/
+  align-items: center;
+  text-align: center; 
   padding: 5px 15px;
   display: inline-block;
-  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 12px; 
   cursor: pointer;
-  text-align: center; 
   text-decoration: none;
   outline: none;
   color: #fff;
   background-color: black;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+
+  /*left: 50%;
+  position: relative;*/
 }
 
 button:hover {
@@ -67,12 +100,16 @@ button:hover {
 
 button:active {
   background-color: gray;
-  box-shadow: 0 2px #666;
-  transform: translateY(10px);
+  /*box-shadow: 0 2px #666;*/
+  /*transform: translateY(10px);*/
 }
 
 /* ANSWER CHOICES */
 input[type=button] {
+  /*left: 50%;
+  position: relative;
+*/
+  display: inline-block;
   color: #08233e;
   font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 200%;
@@ -99,7 +136,7 @@ a {
   display: inline-block;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 20px;
-  box-shadow: 0 9px #999; /*gray*/
+  /*box-shadow: 0 9px #999; /*gray*/
   cursor: pointer;
   border-radius: 100px;
 }
@@ -109,6 +146,9 @@ a:hover {
 }
 
 .course {
+/*  left: 50%;
+  position: relative;*/
+  
   background-color:navy;
   text-align: center;
   margin: none;
@@ -119,7 +159,7 @@ a:hover {
   display: inline-block;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 20px;
-  box-shadow: 0 9px #999;
+  /*box-shadow: 0 9px #999;*/
   cursor: pointer;
   border-radius: 0;
 }
