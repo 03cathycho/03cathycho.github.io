@@ -10,6 +10,7 @@ window.onload = function () {
       console.log(state, progress);
     },
   });
+  // $("#navigation").load("/navigation.html");
 };
 
 function getRndInteger(min, max, excludeNum) {

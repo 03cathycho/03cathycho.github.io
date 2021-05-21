@@ -4,10 +4,10 @@
 <body>
 
 <head>
-  <!-- <meta charset="utf-8">
+  <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
   <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet" href="/styles.css">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -28,118 +28,330 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="index.html">Home</a>
+   
+   <ul class="navbar-nav mr-auto">
+    <li class="nav-item dropdown">
+       <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Challenges
+       </a>
+       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="dropdown-item" href="7dayinterval.html">7-day Interval Challenge</a>
+         <a class="dropdown-item" href="21daychord.html">21-day Chord Challenge</a>
+         <a class="dropdown-item" href="7dayscale.html">7-day Scale Challenge</a>
+         <a class="dropdown-item" href="7daymelodic.html">7-day Melodic Dictation Challenge</a>
+         <a class="dropdown-item" href="9dayharmonic.html">9-day Harmonic Dictation Challenge</a>
+       </div>
+    </li>
+
+    <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Customizable exercises
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="custommelodic.html">Melodic Interval Training</a>
+           <a class="dropdown-item" href="customharmonic.html">Harmonic Interval Training</a>
+           <a class="dropdown-item" href="customscale.html">Scale Training</a>
+           <a class="dropdown-item" href="customchordtraining.html">Chord Training</a>
+         </div>
+    </li>
+  </ul>
+</nav>
+
+<!-- <div class="mx-auto" style="width: 1000px;"> -->
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-7">
+<br>
 <title>Customizable Chord Training with Inversions</title>
 <h1>Customizable Chord Training with Inversions</h1>
 
-<p>Current score: <text id="insertScore"></text></p>
-<button onclick="playAgain()">Click to hear chord</button>
-<p>A new chord will be generated when you click on a checkbox.</p>
+<br><p>Current score: <text id="insertScore"></text></p>
+<button class="btn btn-primary btn-sm" onclick="playAgain()">Click to hear chord</button><br><br>
 
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="0" value="Major triad" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="1" value="Major triad, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="2" value="Major triad, second inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="3" value="Minor triad" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="4" value="Minor triad, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="5" value="Minor triad, second inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="6" value="Diminished triad" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="7" value="Diminished triad, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="8" value="Diminished triad, second inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="9" value="Augmented triad" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="10" value="Major 7th" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="11" value="Major 7th, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="12" value="Major 7th, second inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="13" value="Major 7th, third inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="14" value="Dominant 7th" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="15" value="Dominant 7th, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="16" value="Dominant 7th, second inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="17" value="Dominant 7th, third inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="18" value="Minor 7th" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="19" value="Minor 7th, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="20" value="Minor 7th, second inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="21" value="Minor 7th, third inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="22" value="Half-Diminished 7th" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="23" value="Half-Diminished 7th, first inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="24" value="Half-Diminished 7th, second inversion" />
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="25" value="Half-Diminished 7th, third inversion" /> <br>
-<input class="ansChoice" type="button" onclick="submit(this.id)" id="26" value="Full-Diminished 7th" /> <br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="0" value="Major triad" />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="1" value="Major triad, 1st inv." />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="2" value="Major triad, 2nd inv." />
+  </div>
+</div>
 
-<div id="nextButton"><button onclick="next()">Next</button></div>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="3" value="Minor triad" />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="4" value="Minor triad, 1st inv." />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="5" value="Minor triad, 2nd inv." />
+  </div> 
+</div>
 
-<p>Major triad:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="0" name="Major triad"/>
-<label for="Major triad">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="1" name="Major triad, first inversion"/>
-<label for="Major triad, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="2" name="Major triad, second inversion"/>
-<label for="Major triad, second inversion">2nd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="6" value="Diminished triad" />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="7" value="Diminished triad, 1st inv." />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="8" value="Diminished triad, 2nd inv." />
+  </div> 
+</div>
 
-<p>Minor triad:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="3" name="Minor triad"/>
-<label for="Minor triad">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="4" name="Minor triad, first inversion"/>
-<label for="Minor triad, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="5" name="Minor triad, second inversion"/>
-<label for="Minor triad, second inversion">2nd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="9" value="Augmented triad" />
+  </div> 
+</div>
 
-<p>Diminished triad:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="6" name="Diminished triad"/>
-<label for="Diminished triad">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="7" name="Diminished triad, first inversion"/>
-<label for="Diminished triad, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="8" name="Diminished triad, second inversion"/>
-<label for="Diminished triad, second inversion">2nd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="10" value="Major 7th" />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="11" value="Major 7th, 1st inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="12" value="Major 7th, 2nd inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="13" value="Major 7th, 3rd inv." />
+  </div> 
+</div>
 
-<p>Augmented triad:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="9" name="Augmented triad"/>
-<label for="Augmented triad">Augmented triad</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="14" value="Dominant 7th" />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="15" value="Dominant 7th, 1st inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="16" value="Dominant 7th, 2nd inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="17" value="Dominant 7th, 3rd inv." />
+  </div> 
+</div>
 
-<p>Major 7th:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="10" name="Major 7th"/>
-<label for="Major 7th">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="11" name="Major 7th, first inversion"/>
-<label for="Major 7th, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="12" name="Major 7th, second inversion"/>
-<label for="Major 7th, second inversion">2nd inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="13" name="Major 7th, third inversion"/>
-<label for="Major 7th, third inversion">3rd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="18" value="Minor 7th" />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="19" value="Minor 7th, 1st inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="20" value="Minor 7th, 2nd inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="21" value="Minor 7th, 3rd inv." />
+  </div>
+</div>
 
-<p>Dominant 7th:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="14" name="Dominant 7th"/>
-<label for="Dominant 7th">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="15" name="Dominant 7th, first inversion"/>
-<label for="Dominant 7th, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="16" name="Dominant 7th, second inversion"/>
-<label for="Dominant 7th, second inversion">2nd inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="17" name="Dominant 7th, third inversion"/>
-<label for="Dominant 7th, third inversion">3rd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="22" value="Half-Diminished 7th" />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="23" value="Half-Diminished 7th, 1st inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="24" value="Half-Diminished 7th, 2nd inv." />
+    <input class="btn btn-light col-sm-3 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="25" value="Half-Diminished 7th, 3rd inv." />
+  </div>
+</div>
 
-<p>Minor 7th:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="18" name="Minor 7th"/>
-<label for="Minor 7th">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="19" name="Minor 7th, first inversion"/>
-<label for="Minor 7th, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="20" name="Minor 7th, second inversion"/>
-<label for="Minor 7th, second inversion">2nd inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="21" name="Minor 7th, third inversion"/>
-<label for="Minor 7th, third inversion">3rd inversion</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" onclick="submit(this.id)" id="26" value="Full-Diminished 7th" />
+  </div>
+</div>
 
-<p>Half-Diminished 7th:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="22" name="Half-Diminished 7th"/>
-<label for="Half-Diminished 7th">Root position</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="23" name="Half-Diminished 7th, first inversion"/>
-<label for="Half-Diminished 7th, first inversion">1st inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="24" name="Half-Diminished 7th, second inversion"/>
-<label for="Half-Diminished 7th, second inversion">2nd inversion</label>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="25" name="Half-Diminished 7th, third inversion"/>
-<label for="Half-Diminished 7th, third inversion">3rd inversion</label><br>
+<br>
+<!-- <div id="nextButton"><button class="btn btn-light" onclick="next()">Next</button></div> -->
+<button class="btn btn-primary btn-sm" onclick="next()" id="nextButton">Next</button>
 
-<p>Full-Diminished 7th:</p>
-<input class="checkbox" type="checkbox" onclick="check(this.id)" id="26" name="Full-Diminished 7th"/>
-<label for="Full-Diminished 7th">Full-Diminished 7th</label><br>
+  </div>
+
+  <div class="col-sm-5">
+
+<br>
+<p><i>A new chord will be generated when you click on a checkbox.</i></p>
+
+
+<p><b>Major triad:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" onclick="check(this.id)" id="0" name="Major triad"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="1" name="Major triad, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="2" name="Major triad, 2nd inv."/> 2nd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Minor triad:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="3" name="Minor triad"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="4" name="Minor triad, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="5" name="Minor triad, 2nd inv."/> 2nd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Diminished triad:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="6" name="Diminished triad"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="7" name="Diminished triad, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="8" name="Diminished triad, 2nd inv."/> 2nd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Augmented triad:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="9" name="Augmented triad"/> Augmented triad
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Major 7th:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="10" name="Major 7th"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="11" name="Major 7th, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="12" name="Major 7th, 2nd inv."/> 2nd inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="13" name="Major 7th, 3rd inv."/> 3rd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Dominant 7th:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="14" name="Dominant 7th"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="15" name="Dominant 7th, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="16" name="Dominant 7th, 2nd inv."/> 2nd inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="17" name="Dominant 7th, 3rd inv."/> 3rd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Minor 7th:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="18" name="Minor 7th"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="19" name="Minor 7th, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="20" name="Minor 7th, 2nd inv."/> 2nd inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="21" name="Minor 7th, 3rd inv."/> 3rd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Half-Diminished 7th:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="22" name="Half-Diminished 7th"/> Root position
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="23" name="Half-Diminished 7th, 1st inv."/> 1st inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="24" name="Half-Diminished 7th, 2nd inv."/> 2nd inversion
+      </label>
+
+      <label class="btn btn-light col-sm-3 text-wrap">
+        <input class="checkbox" type="checkbox" onclick="check(this.id)" id="25" name="Half-Diminished 7th, 3rd inv."/> 3rd inversion
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<p><b>Full-Diminished 7th:</b></p>
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <label for="Full-Diminished 7th">Full-Diminished 7th</label> Full-Diminished 7th
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<br><br>
+  </div>
+</div>
+</div>
 
 <script src="base.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
 <script>
   var prevNoteBass;
@@ -225,7 +437,8 @@
   function submit(clicked_id) {
     if (clicked_id == answer) {
       $("#nextButton").show();
-      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;$("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
+      $("#nextButton").show();if (firstTime == true) {score++;total++;}firstTime = true;
+      $("#insertScore").html(score + "/" + total + ", Percent correct: " + Math.round(100.0 * score / total) + "%");
 
       $("body").find('#' + clicked_id).addClass("rightButton");
       $(".ansChoice").prop('disabled', true);

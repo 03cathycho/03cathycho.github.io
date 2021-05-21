@@ -1,4 +1,4 @@
-code,
+/*code,
 pre {
   background: #eee;
 }
@@ -10,7 +10,7 @@ code {
 
 pre {
   padding: 1em;
-}
+}*/
 
 /*header img {
   display: inline-block;
@@ -19,22 +19,23 @@ pre {
   width: 120px;
 }*/
 
-html {
-  background: #add8e6;
+/*html {
+  background-color: #add8e6 !important;
 
-  /*background-size: cover;*/
+  background-size: cover;
 }
 
 body {
   margin: 0 auto;
   max-width: 60em;
-  font-family: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font-family: 2.4em Ariel, sans-serif;
+  background-color: #add8e6;
 
-}
+}*/
 
-h1 {
+/*h1 {
   color: navy;
-  font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+  font:2.4em Ariel, sans-serif;
   font-size: 55px; 
   text-align: center;
 }
@@ -59,23 +60,22 @@ p {
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 18px;
   text-align: left;
-}
+}*/
 
-.description {
+/*p.description {
   margin-top: -20px;
   margin-top: 0px;
   font-size: 13px;
   color: white;
   text-align: center;
 }
-
+*/
 text.time {
-  color: red;
+  color: red !important;
 }
 
 /* CLICK TO HEAR AGAIN, NEXT BUTTON*/
-button {
-  /*vertical-align: middle;*/
+/*button {
   align-items: center;
   text-align: center; 
   padding: 5px 15px;
@@ -89,42 +89,34 @@ button {
   background-color: black;
   border: none;
   border-radius: 15px;
-
-  /*left: 50%;
-  position: relative;*/
 }
 
 button:hover {
   background-color: gray;
-}
-
+}*/
+/*
 button:active {
   background-color: gray;
-  /*box-shadow: 0 2px #666;*/
-  /*transform: translateY(10px);*/
 }
-
+*/
 /* ANSWER CHOICES */
 input[type=button] {
-  /*left: 50%;
-  position: relative;
-*/
-  display: inline-block;
+  /*display: inline-block;
   color: #08233e;
   font: 2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 200%;
   cursor: pointer;
-  text-align: center;
+  text-align: center;*/
 }
 
 .wrongButton {
-  background-color: red;
+  background-color: red !important;
 }
 
 .rightButton {
-  background-color: green;
+  background-color: green !important;
 }
-
+/*
 a {
   background-color:navy;
   text-align: center;
@@ -136,7 +128,6 @@ a {
   display: inline-block;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 20px;
-  /*box-shadow: 0 9px #999; /*gray*/
   cursor: pointer;
   border-radius: 100px;
 }
@@ -146,9 +137,7 @@ a:hover {
 }
 
 .course {
-/*  left: 50%;
-  position: relative;*/
-  
+
   background-color:navy;
   text-align: center;
   margin: none;
@@ -159,7 +148,6 @@ a:hover {
   display: inline-block;
   font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
   font-size: 20px;
-  /*box-shadow: 0 9px #999;*/
   cursor: pointer;
   border-radius: 0;
-}
+}*/
