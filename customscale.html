@@ -1,9 +1,12 @@
 
 <!DOCTYPE html>
 <html>
-<body>
 
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
   <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
   <link rel="stylesheet" href="styles.css">
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -24,42 +27,171 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<body>
+  
+<header class="sticky-top">
+<div id="nav-placeholder"></div>
+<script>
+$(function(){
+  $("#nav-placeholder").load("/navigation.html");
+});
+</script>
+</header>
+
+<div class="container-fluid" align="center">
+<br>
 <title>Customizable Scale Training</title>
-<h1>Customizable Scale Training</h1>
+<h1>Customizable Scale Training</h1><br>
+</div>
 
-<p>Current score: <text id="insertScore"></text></p>
-<button id="hearAgain">Click to hear scale</button>
-<p>A new scale will be generated when you click on a checkbox.</p>
+<!-- <div class="mx-auto" style="width: 1000px;"> -->
+<div class="container-fluid">
+<div class="row">
+  <div class="col-sm-7">
 
-<input class="ansChoice" type="button" id="0" value="Major (Ionian)" />
-<input class="ansChoice" type="button" id="1" value="Natural Minor (Aeolian)" />
-<input class="ansChoice" type="button" id="2" value="Harmonic Minor" />
-<input class="ansChoice" type="button" id="3" value="Melodic Minor" /><br>
-<input class="ansChoice" type="button" id="4" value="Dorian" />
-<input class="ansChoice" type="button" id="5" value="Phrygian" />
-<input class="ansChoice" type="button" id="6" value="Lydian" /><br>
-<input class="ansChoice" type="button" id="7" value="Mixolydian" />
+<br><p>Current score: <text id="insertScore"></text></p>
+<button class="btn btn-primary btn-sm" onclick="playAgain()">Click to hear scale</button><br><br>
 
-<div id="nextButton"><button onclick="next()">Next</button></div>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" id="0" value="Major (Ionian)" />
+  </div>
+</div>
 
-<input class="checkbox" type="checkbox" id="0" name="=Major (Ionian)"/>
-<label for="Major (Ionian)">Major (Ionian)</label><br>
-<input class="checkbox" type="checkbox" id="1" name="Natural Minor (Aeolian)"/>
-<label for="Natural Minor (Aeolian)">Natural Minor (Aeolian)</label><br>
-<input class="checkbox" type="checkbox" id="2" name="Harmonic Minor"/>
-<label for="Harmonic Minor">Harmonic Minor</label><br>
-<input class="checkbox" type="checkbox" id="3" name="Melodic Minor"/>
-<label for="Melodic Minor">Melodic Minor</label><br>
-<input class="checkbox" type="checkbox" id="4" name="Dorian"/>
-<label for="Dorian">Dorian</label><br>
-<input class="checkbox" type="checkbox" id="5" name="Phrygian"/>
-<label for="Phrygian">Phrygian</label><br>
-<input class="checkbox" type="checkbox" id="6" name="Lydian"/>
-<label for="Lydian">Lydian</label><br>
-<input class="checkbox" type="checkbox" id="7" name="Mixolydian"/>
-<label for="Mixolydian">Mixolydian</label><br>
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" id="1" value="Natural Minor (Aeolian)" />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" id="2" value="Harmonic Minor" />
+    <input class="btn btn-light col-sm-4 text-wrap ansChoice" type="button" id="3" value="Melodic Minor" />
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" id="4" value="Dorian" />
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" id="5" value="Phrygian" />
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" id="6" value="Lydian" />
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <input class="btn btn-light col-sm-12 text-wrap ansChoice" type="button" id="7" value="Mixolydian" />
+  </div>
+</div>
+
+<br>
+<button class="btn btn-primary btn-sm" onclick="next()" id="nextButton">Next</button>
+
+  </div>
+
+  <div class="col-sm-5">
+
+<br>
+<p><i>A new scale will be generated when you click on a checkbox.</i></p>
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="0" name="=Major (Ionian)"/> Major (Ionian)
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="1" name="Natural Minor (Aeolian)"/> Natural Minor (Aeolian)
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" id="2" name="Harmonic Minor"/> Harmonic Minor
+      </label>
+
+      <label class="btn btn-light col-sm-4 text-wrap">
+        <input class="checkbox" type="checkbox" id="3" name="Melodic Minor"/> Melodic Minor
+      </label>
+
+    </div>
+  </div>
+</div>
+
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="4" name="Dorian"/> Dorian
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="5" name="Phrygian"/> Phrygian
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="6" name="Lydian"/> Lydian
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<div data-toggle="buttons">
+  <div class="container-fluid">
+    <div class="row">
+
+      <label class="btn btn-light col-sm-12 text-wrap">
+        <input autocomplete="off" class="checkbox" type="checkbox" id="7" name="Mixolydian"/> Mixolydian
+      </label>
+
+    </div>
+  </div>
+</div>
+
+<br><br>
+  </div>
+</div>
+</div>
 
 <script src="base.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
 
 <script>
   var playDuration = 0.75;

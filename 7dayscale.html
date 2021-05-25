@@ -5,36 +5,97 @@ TODO: Descending?
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
+
+<header class="sticky-top">
+<div id="nav-placeholder"></div>
+<script>
+$(function(){
+  $("#nav-placeholder").load("/navigation.html");
+});
+</script>
+</header>
+
+<br>
+
+<div class="container-fluid">
+<div align="center">
 
 <title>7-Day Scale Challenge</title>
 <h1>7-Day Scale Challenge</h1>
 
-<h5>Programs:</h5>
+<br>
+<h3>Programs:</h3>
+</div>
+
+<div style="margin: 0 auto; max-width: 50em;">
 
 <p>Day 1</p>
-<a href="/scaleday1.html">Major, Minor (Natural)</a>
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday1.html">Major, Minor (Natural)</a>
+	</div>
+</div>
 
 <p>Day 2</p>
-<a href="/scaleday2.html">Major, Minor (Natural, Harmonic)</a> 
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday2.html">Major, Minor (Natural, Harmonic)</a> 
+	</div>
+</div>
 
 <p>Day 3</p>
-<a href="/scaleday3.html">Major, Minor (Natural, Harmonic, Melodic)</a> 
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday3.html">Major, Minor (Natural, Harmonic, Melodic)</a> 
+	</div>
+</div>
 
 <p>Day 4</p>
-<a href="/takeBreak.html">Take a break!</a>
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/takeBreak.html">Take a break!</a>
+	</div>
+</div>
 
 <p>Day 5</p>
-<a href="/scaleday5.html">Natural Minor (Aeolian), Dorian, Phrygian</a> 
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday5.html">Natural Minor (Aeolian), Dorian, Phrygian</a> 
+	</div>
+</div>
 
 <p>Day 6</p>
-<a href="/scaleday6.html">Major (Ionian), Mixolydian, Lydian</a> 
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday6.html">Major (Ionian), Lydian, Mixolydian</a> 
+	</div>
+</div>
 
 <p>Day 7</p>
-<a href="/scaleday7.html">Major, Minor, Modal Scales</a> 
+<div class="container-fluid">
+  	<div class="row">
+		<a class="btn btn-light col-sm-12 text-wrap course" href="/scaleday7.html">Major, Minor, Modal Scales</a>  
+	</div>
+</div>
+
+<br><br>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</div>
+</div>
 
 </body>
 </html>

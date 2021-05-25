@@ -1,17 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.png">
 	<link rel="stylesheet" href="styles.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+<body>
+	
+	<header class="sticky-top">
+	<div id="nav-placeholder"></div>
+	<script>
+	$(function(){
+	  $("#nav-placeholder").load("/navigation.html");
+	});
+	</script>
+	</header>
+
+<br>
+
+<div class="container-fluid">
+<div align="center">
+<body>
+
 <body>
 
 <title>7-Day Melodic Dictation Challenge</title>
 <h1>7-Day Melodic Dictation Challenge</h1>
 
-<h5>Instructions:<br><p>You will need your own sheet of staff paper to complete these exercises. Once you click on an exercise, you will see a button that says "Start dictation." When you click this button, you will hear a recording. Once the recording stops, you will see a timer go off until the same recording will be played a second time. You will have 30 seconds, 45 seconds, 60 seconds, and 90 seconds, respectively, in between each of the playbacks to write down what you hear. If you want to start again from the beginning, refresh the page.<br><i>To ensure the best sound quality, use headphones.</p></h5>
+<div style="margin: 0 auto; max-width: 60em;">
+	<div class="container-fluid" align="left">
+		<p><b>Instructions:</b><br>You will need your own sheet of staff paper to complete these exercises. Once you click on an exercise, you will see a button that says "Start dictation." When you click this button, you will hear a recording. Once the recording stops, you will see a timer go off until the same recording will be played a second time. You will have 30 seconds, 45 seconds, 60 seconds, and 90 seconds, respectively, in between each of the playbacks to write down what you hear. If you want to start again from the beginning, refresh the page.<br><i>To ensure the best sound quality, use headphones.</i></p>
+	</div>
 
-<h5>Programs:</h5>
+	<div class="container-fluid" align="center">
+		<br>
+		<h3>Programs:</h3>
+	</div>
+</div>
+
+
+<div style="margin: 0 auto; max-width: 50em;" align="left">
 
 <p><b>Day 1 -</b> Scale degrees: 1, 2, 3</p>
 <a href="/melodicday1a.html">Exercise 1</a>
@@ -51,6 +85,17 @@
 <a href="/melodicday7b.html">Exercise 2</a>
 <a href="/melodicday7c.html">Exercise 3</a>
 <a href="/melodicday7d.html">Exercise 4</a>
+
+
+<br><br>
+
+<script src="base.js"></script>
+<script src="/dictation.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</div>
+</div>
 
 </body>
 </html>

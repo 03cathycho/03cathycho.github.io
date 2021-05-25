@@ -1,6 +1,10 @@
+
+
 var previous = 0;
 
 window.onload = function () {
+  
+  $("#nav-placeholder").load("/navigation.html");
   $("#nextButton").hide();
   console.log("its hiding cuz it loaded");
   MIDI.loadPlugin({

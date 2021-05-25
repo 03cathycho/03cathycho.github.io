@@ -2,64 +2,115 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<link rel="stylesheet" href="styles.css">
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link href="//db.onlinewebfonts.com/c/98f5fe0ce4808213a131b58dfc8dfea3?family=Grouch+BT" rel="stylesheet" type="text/css"/>
 </head>
-<body>
 
-	<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
-	  <a class="navbar-brand" href="index.html">Home</a>
-	   
-	   <ul class="navbar-nav mr-auto">
-	    <li class="nav-item dropdown">
-	       <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	         Challenges
-	       </a>
-	       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	         <a class="dropdown-item" href="7dayinterval.html">7-day Interval Challenge</a>
-	         <a class="dropdown-item" href="21daychord.html">21-day Chord Challenge</a>
-	         <a class="dropdown-item" href="7dayscale.html">7-day Scale Challenge</a>
-	         <a class="dropdown-item" href="7daymelodic.html">7-day Melodic Dictation Challenge</a>
-	         <a class="dropdown-item" href="9dayharmonic.html">9-day Harmonic Dictation Challenge</a>
-	       </div>
-	    </li>
+<body>	
 
-	    <li class="nav-item dropdown">
-	         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	           Customizable exercises
-	         </a>
-	         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	           <a class="dropdown-item" href="custommelodic.html">Melodic Interval Training</a>
-	           <a class="dropdown-item" href="customharmonic.html">Harmonic Interval Training</a>
-	           <a class="dropdown-item" href="customscale.html">Scale Training</a>
-	           <a class="dropdown-item" href="customchordtraining.html">Chord Training</a>
-	         </div>
-	    </li>
-	  </ul>
-	</nav>
+	<!-- <div id="splash" style="display:none; height: 700px;"><img src="favicon.png"/></div> -->
+	<div id="splash" style="display:none; width: 100%;" align="center"><img src="favicon.png"/></div>
+
+    <script>
+      // Slowly fade in image (5 seconds) and then slide it up (2 seconds).
+      $().ready(function() {
+        $("#splash").fadeIn(2000).slideUp(2000);
+        // $("#splash").css('transform','rotate(45deg)');
+      });
+    </script>
+
+	<header class="sticky-top">
+	<div id="nav-placeholder"></div>
+	<script>
+	$(function(){
+	  $("#nav-placeholder").load("/navigation.html");
+	});
+	</script>
+	</header>
+
+	<div class="bg-cover text-white" align="center" style="background: url(banner.jpg); height: 350px;">
+		<div class="container py-5 text-center">
+	    	<h1 class="display-4 font-weight-bold" style="margin-bottom: 0; margin-top: -5px; font-size: 60px; font-family: Grouch;"><i>Andover Music</i></h1>
+	    </div>
+	</div>
+
+<div style="margin: 0 auto; max-width: 60em;">
+	<div class="container-fluid" align="center">
+		<br>
+		<title>Andover Music</title>
+		<br>
+		<h1 style="font-family: Georgia;">Welcome to Andover Music!</h1>
+		<br>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-5">
+				<img class="img-thumbnail" src="/ariel.jpg" style="width: 100%;" align="right">
+				 <figcaption>Ariel Wang '21 works on her 7-day Interval Challenge.</figcaption>
+			</div>
+
+			<div class="col-md-7">
+				<p>
+					<!-- <b>What is ear-training? </b><br>
+					Ear-training is _______. <br><br> -->
+					<b>How do I use this website? </b><br>
+					This website gives you self-paced courses to improve your ear-training skills. It contains a variety of exercises including interval training, chord training, scale training, melodic dictation, and harmonic dictation. Scroll down to access these coursescourses. Designed to faciliate individual agenda, each course is self-paced; you can select your desired program—each labelled with suggested time commitment and difficulty level—and follow through the scheduled course.
+
+					If you want more training, feel free to check out the customizable options where you can choose which musical elements you want to train. <br><br>
+
+					<b>Why is ear-training important? </b><br>
+					Ear-training is for everyone interested in music! It allows you to better understand the things you hear and convey your ideas more accurately when composing. By extension, ear-training will help you build other musical skills such as improvisation. <br><br>
+
+				</p>
+			</div>	
+		</div>
+<!-- 
+		<br>
+		<b>Contributors</b><br>
+		Project Advisor: Dr. Derek Jacoby, instructor in music<br>
+		Tech Advisors: Mr. David Crane, founder of ToneSavvy <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Dr. Nicholas Zufelt, instructor in mathematics, statistics, and computer science <br>
+		Sponsor: Phillips Academy’s Music Department<br>
+		Peer Support: Shira Wolpowitz '21 for her help with layout -->
+	</div>
+</div>
+
+<br><br>
+
+	<div class="bg-cover text-white" align="center" style="background: black;">
+		<!-- <hr class="mt-5 mb-5"> -->
+		<div class="container py-5 text-center">
+	    	<h1 style="color: white;">Programs</h1>
+	    		<p style="color: white;">The difficulty is based on a 1-3 scale.</p>
+	    		<br>
+	    		<div class="container-fluid">
+	    			<a style="margin-left:30px; font-size: 20px" class="btn btn-danger text-wrap course" align="center" href="/7dayinterval.html">7-Day Interval Challenge<br><p class="description" style="margin-bottom:0px;">5-10 mins per day<br>7 days<br>Difficulty: 1</p></a>
+	    			<a style="margin-left:30px; font-size: 20px" class="btn btn-success text-wrap course" href="/21daychord.html">21-Day Chord Challenge<br><p class="description" style="margin-bottom:0px;">5-10 mins per day<br>21 days<br>Difficulty: 3</p></a>
+	    			<a style="margin-left:30px; color: white; font-size: 20px" class="btn btn-warning text-wrap course" href="/7dayscale.html">7-Day Scale Challenge<br><p class="description" style="margin-bottom:0px;">5-10 mins per day<br>7 days<br>Difficulty: 2</p></a>
+	    		</div>
+
+	    		<br>
+
+	    		<div class="container-fluid">
+	    			<a style="margin-left:30px; font-size: 20px" class="btn btn-primary text-wrap course" href="/7daymelodic.html">7-Day Melodic Dictation Challenge<br><p class="description" style="margin-bottom:0px;">15-20 mins per day<br>7 days<br>Difficulty: 2.5</p></a>
+	    			<a style="margin-left:30px; font-size: 20px" class="btn btn-info text-wrap course" href="/9dayharmonic.html">9-Day Harmonic Dictation Challenge<br><p class="description" style="margin-bottom:0px;">15-20 mins per day<br>8 days<br>Difficulty: 2.5</p></a>
+	    		</div>
+	    </div>
+	    <br>
+	    <!-- <hr class="mt-5 mb-5"> -->
+	</div>
 
 <div class="container-fluid" align="center">
 
-<br>
-<title>Andover Music</title>
-<h1>Welcome to Andover Music!</h1>
-
-<p>This website gives you a personalized, self-guided course to improve your musical ear!<br>[Insert something about logo and support]</p>
-
-<h3>Programs:</h3>
-<p>The difficulty is based on a 1-3 scale.</p>
-
-<a class="btn btn-outline-danger text-wrap course" href="/7dayinterval.html">7-Day Interval Challenge<br><p class="description">5-10 mins per day<br>7 days<br>Difficulty: 1</p></a>
-<a class="btn btn-outline-success text-wrap course" href="/21daychord.html">21-Day Chord Challenge<br><p class="description">5-10 mins per day<br>21 days<br>Difficulty: 3</p></a>
-<a class="btn btn-outline-dark text-wrap course" href="/7dayscale.html">7-Day Scale Challenge<br><p class="description">5-10 mins per day<br>7 days<br>Difficulty: 2</p></a>
-<a class="btn btn-outline-primary text-wrap course" href="/7daymelodic.html">7-Day Melodic Dictation Challenge<br><p class="description">15-20 mins per day<br>7 days<br>Difficulty: 2.5</p></a>
-<a class="btn btn-outline-info text-wrap course" href="/9dayharmonic.html">9-Day Harmonic Dictation Challenge<br><p class="description">15-20 mins per day<br>8 days<br>Difficulty: 2.5</p></a>
 <br><br>
 
-<p>Want more practice? Click below to access self customizable exercises!</p>
+<p style="font-size: 25px;">Want more practice? Click below to access self-customizable exercises.</p>
 
 <a class="btn btn-light text-wrap course" href="/custommelodic.html">Melodic Interval Training</a>
 <a class="btn btn-light text-wrap course" href="/customharmonic.html">Harmonic Interval Training</a>
@@ -68,19 +119,40 @@
 
 </div>
 
-<!-- <p>The following exercises are not customizable: <br><i>I should probably remove this from the home page?</p>
-<a href="/melodicintervaltraining.html">Melodic Interval Training</a>
-<a href="/harmonicintervaltraining.html">Harmonic Interval Training</a><br>
-<a href="/scaletraining.html">Scale Training</a>
-<a href="/modalscaletraining.html">Modal Scale Training</a><br>
-<a href="/triadchordtraining.html">Triad Chord Training</a>
-<a href="/triadchordtraininginversions.html">Triad Chord Training with Inversions</a>
-<a href="/sevenchordtraining.html">Seventh Chord Training</a>
-<a href="/sevenchordtraininginversions.html">Seventh Chord Training with Inversions</a> -->
+<div style="margin: 0 auto; max-width: 80em;">
+	<div class="container-fluid" align="center">
+	<hr class="mt-5 mb-5">
+	<p style="margin-top: -20px;">
+	
+	<!-- <b>Contributors</b><br>
+		Project Advisor: Dr. Derek Jacoby, instructor in music<br>
+		Tech Advisors: Mr. David Crane, founder of ToneSavvy <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Dr. Nicholas Zufelt, instructor in mathematics, statistics, and computer science <br>
+		Sponsor: Phillips Academy’s Music Department<br>
+		Peer Support: Shira Wolpowitz '21 for her help with layout<br><br> -->
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+	<p style="font-size: 25px;">Special thanks to</p>
+
+	Project advisor and mentor: Dr. Derek Jacoby, Instructor in Music at Phillips Academy<br>
+	<i>Dr. Jacoby orchestrated this project from beginning to end with his invaluable guidance and seasoned expertise.</i><br>
+	Tech advisors: Mr. David Crane, Founder of <a href="https://tonesavvy.com/" class="link-primary">ToneSavvy</a><br>
+	Dr. Nicholas Zufelt, Instructor in Mathematics, Statistics, and Computer Science at Phillips Academy<br>
+	Sponsor: Phillips Academy’s Music Department<br>
+	Peer Support: Shira Wolpowitz '21 for her help with layout<br><br>
+<!-- 
+	This project was made possible by my advisor and mentor, Dr. Derek Jacoby. I would like to thank him for his endless support and invaluable guidance; I am so glad to have had the opportunity to work on this project with him.<br><br>
+
+	I would also like to thank Mr. David Crane, founder of ToneSavvy, and Dr. Nicholas Zufelt, Instructor in Computer Science at Phillips Academy Andover, for their help with coding. Additional thanks to Phillips Academy's Music Department for sponsoring this project and Shira Wolpowitz '21 for her help with the layout.<br><br> -->
+
+	</p>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
+<br><br>
 
 </body>
 </html>
