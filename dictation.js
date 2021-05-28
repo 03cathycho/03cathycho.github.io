@@ -24,16 +24,23 @@ function startTimer(duration, display) {
 }
 
 function showPicture(answer) {
-  $("#answer").attr("src", answer);
-  $("#answer").attr("style","visibility: visible");
+  $("#promptImage").attr("src", answer);
+  $("#promptImage").attr("width", "50%");
+  // $("#answer").attr("src", answer);
+  // $("#answer").attr("style","visibility: visible");
   $("#buttonShow").hide();
   $("#buttonHide").attr("style","visibility: visible");
+  // $("#prompt").attr("style","visibility: hidden");
+
 }
 
-function hidePicture() {
-  $("#answer").attr("style","visibility: hidden");
+function hidePicture(prompt) {
+  $("#promptImage").attr("src", prompt);
+  $("#promptImage").attr("width", "10%");
+  // $("#answer").attr("style","visibility: hidden");
   $("#buttonShow").show();
   $("#buttonHide").attr("style","visibility: hidden");
+  // $("#prompt").attr("style","visibility: visible");
 }
 
 function playSound() {
@@ -65,8 +72,6 @@ function startDictation() {
   setTimeout(function() {playSound() }, recTime * 3 + fourthTime);
   setTimeout(function() {startTimer(90, display) }, recTime * 4 + fourthTime);
 }
-
-var previousNum;
 
 var harmonicday = [ 
   [ "/harmonicday1/harmonicday1a.html",
@@ -144,14 +149,107 @@ var harmonicday = [
   ]
 ];
 
-function chooseDictation(harmonicdayx, x) {
-  console.log("clicked");
-    var randomNum = Math.floor(Math.random() * harmonicday[x].length);
+function chooseDictation(harmonicdayx, day, ex) {
+  if (ex == undefined) {
+    var randomNum = Math.floor(Math.random() * harmonicday[day].length);
+    document.getElementById(harmonicdayx).href = harmonicday[day][randomNum];
+  } else {
+    var previousNum = ex;
+    var randomNum = Math.floor(Math.random() * harmonicday[day].length);
     while (randomNum == previousNum) {
-      randomNum = Math.floor(Math.random() * harmonicday[x].length);
+      randomNum = Math.floor(Math.random() * harmonicday[day].length);
     }
-    previousNum = randomNum;
-    console.log("should change now");
-    document.getElementById(harmonicdayx).href = harmonicday[x][randomNum];
-    // document.getElementById(harmonicdayx).href = "/index.html";
+    document.getElementById(harmonicdayx).href = harmonicday[day][randomNum];
+  }
 }
+
+var melodicday = [ 
+  [ "/melodicday1/melodicday1a.html",
+  "/melodicday1/melodicday1b.html"
+  // "/melodicday1/melodicday1c.html",
+  // "/melodicday1/melodicday1d.html",
+  // "/melodicday1/melodicday1e.html",
+  // "/melodicday1/melodicday1f.html",
+  // "/melodicday1/melodicday1g.html",
+  // "/melodicday1/melodicday1h.html"
+  ], [
+  "/melodicday2/melodicday2a.html",
+  "/melodicday2/melodicday2b.html",
+  // "/melodicday2/melodicday2c.html",
+  // "/melodicday2/melodicday2d.html",
+  // "/melodicday2/melodicday2e.html",
+  // "/melodicday2/melodicday2f.html",
+  // "/melodicday2/melodicday2g.html",
+  // "/melodicday2/melodicday2h.html"
+  ], [
+  "/melodicday3/melodicday3a.html",
+  "/melodicday3/melodicday3b.html",
+  // "/melodicday3/melodicday3c.html",
+  // "/melodicday3/melodicday3d.html",
+  // "/melodicday3/melodicday3e.html",
+  // "/melodicday3/melodicday3f.html",
+  // "/melodicday3/melodicday3g.html",
+  // "/melodicday3/melodicday3h.html"
+  ], [
+  "/melodicday4/melodicday4a.html",
+  "/melodicday4/melodicday4b.html",
+  // "/melodicday4/melodicday4c.html",
+  // "/melodicday4/melodicday4d.html",
+  // "/melodicday4/melodicday4e.html",
+  // "/melodicday4/melodicday4f.html",
+  // "/melodicday4/melodicday4g.html",
+  // "/melodicday4/melodicday4h.html"
+  ], ["break"
+  ], [
+  "/melodicday6/melodicday6a.html",
+  "/melodicday6/melodicday6b.html",
+  // "/melodicday6/melodicday6c.html",
+  // "/melodicday6/melodicday6d.html",
+  // "/melodicday6/melodicday6e.html",
+  // "/melodicday6/melodicday6f.html",
+  // "/melodicday6/melodicday6g.html",
+  // "/melodicday6/melodicday6h.html"
+  ], [
+  "/melodicday7/melodicday7a.html",
+  "/melodicday7/melodicday7b.html",
+  // "/melodicday7/melodicday7c.html",
+  // "/melodicday7/melodicday7d.html",
+  // "/melodicday7/melodicday7e.html",
+  // "/melodicday7/melodicday7f.html",
+  // "/melodicday7/melodicday7g.html",
+  // "/melodicday7/melodicday7h.html"
+  ], [
+  "/melodicday8/melodicday8a.html",
+  "/melodicday8/melodicday8b.html",
+  // "/melodicday8/melodicday8c.html",
+  // "/melodicday8/melodicday8d.html",
+  // "/melodicday8/melodicday8e.html",
+  // "/melodicday8/melodicday8f.html",
+  // "/melodicday8/melodicday8g.html",
+  // "/melodicday8/melodicday8h.html"
+  ], [
+  "/melodicday9/melodicday9a.html",
+  "/melodicday9/melodicday9b.html",
+  // "/melodicday9/melodicday9c.html",
+  // "/melodicday9/melodicday9d.html",
+  // "/melodicday9/melodicday9e.html",
+  // "/melodicday9/melodicday9f.html",
+  // "/melodicday9/melodicday9g.html",
+  // "/melodicday9/melodicday9h.html"
+  ]
+];
+
+function chooseMelDictation(melodicdayx, day, ex) {
+  if (ex == undefined) {
+    var randomNum = Math.floor(Math.random() * melodicday[day].length);
+    document.getElementById(melodicdayx).href = melodicday[day][randomNum];
+  } else {
+    var previousNum = ex;
+    var randomNum = Math.floor(Math.random() * melodicday[day].length);
+    while (randomNum == previousNum) {
+      randomNum = Math.floor(Math.random() * melodicday[day].length);
+    }
+    document.getElementById(melodicdayx).href = melodicday[day][randomNum];
+  }
+}
+

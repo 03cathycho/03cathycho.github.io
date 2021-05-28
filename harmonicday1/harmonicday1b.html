@@ -52,16 +52,20 @@
 
 <p>Copy down this prompt:</p>
 <p>Eb Major, 2 bars:</p>
-<img src="/harmonicday1/harmonicday1bprompt.png" alt="Harmonic Day 1, Ex. 2" width="10%">
+
+<img id="promptImage" src="/harmonicday1/harmonicday1bprompt.png" width="10%">
+
+<br><br>
 
 <p>Press the button below to start the timed sequence of dictations:</p>
 <audio style="visibility: hidden;" id="prompt">
-  <source src="/harmonicday1//harmonicday1b.mp3" type="audio/mp3">  <!-- TODO: make rests, make the outer voices louder? -->
+  <source src="/harmonicday1/harmonicday1b.mp3" type="audio/mp3">
 Your browser does not support the audio element.
 </audio>
+
 <button class="btn btn-primary btn-sm startDictation" onclick="startDictation()" type="button">Start dictation</button><br><br>
 
-<a id="harmonicday1" class="btn btn-primary btn-sm" onclick="chooseDictation('harmonicday1', 0)">I heard this one before</a>
+<a id="harmonicday1" class="btn btn-primary btn-sm" onclick="chooseDictation('harmonicday1', 0, 1)">I heard this one before</a>
 
 <p><br>Number of times played: <text id="insertScore"></text></p>
 <p>Time left until next recording: <text class="time" id="time">0 seconds</text></p>
@@ -69,9 +73,7 @@ Your browser does not support the audio element.
 <p>Check your work:</p>
 <div align="center">
 <input class="btn btn-primary btn-sm" id="buttonShow" type="button" onclick="showPicture('/harmonicday1/harmonicday1b.png')" value="Click to reveal answer" /></div>
-<input class="btn btn-primary btn-sm" style="visibility: hidden;" id="buttonHide" type="button" onclick="hidePicture()" value="Click to hide answer" /><br><br>
-
-<img style="visibility: hidden;" id="answer" alt="Harmonic Day 1, Ex. 1" width="50%">
+<input class="btn btn-primary btn-sm" style="visibility: hidden;" id="buttonHide" type="button" onclick="hidePicture('/harmonicday1/harmonicday1bprompt.png')" value="Click to hide answer" /><br><br>
 
 <script src="/dictation.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
