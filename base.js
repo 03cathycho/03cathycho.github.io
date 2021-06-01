@@ -1,5 +1,3 @@
-
-
 var previous = 0;
 
 window.onload = function () {
@@ -30,16 +28,3 @@ function getRndInteger(min, max, excludeNum) {
     return x;
   }
 }
-
-// function getRndIntegerArray(int[] array) {
-//   return Math.floor(Math.random() * (max - min)) + min;
-// } -> for the more specified ones, e.g. choosing between [P4, P5, P8] (get length, random int from there and return the element)
-
-// $(document).ready(function(){
-//   $("#nextButton").hide();
-//   console.log("its hiding cuz it loaded");
-//   $("#nextButton").click(function(){
-//     $("#nextButton").hide(); 
-//     console.log("its hiding cuz clicked");
-//   });
-// });

@@ -13,8 +13,21 @@
 
 <body>	
 
-	<!-- <div id="splash" style="display:none; height: 700px;"><img src="favicon.png"/></div> -->
-	<div id="splash" style="display:none; width: 100%;" align="center"><img src="favicon.png"/></div>
+	<div class="splash">
+		<img class="fade-in" src="/splash.png" style="width: 16%; vertical-align: auto; margin-top: 60px" align="center">
+	</div>
+
+	<script>
+		const splash = document.querySelector('.splash');
+
+		document.addEventListener('DOMContentLoaded', (e)=>{
+		  setTimeout(()=>{
+		    splash.classList.add('display-none');
+		  }, 2000);
+		})
+	</script>
+
+	<!-- <div id="splash" style="display:none; width: 100%;" align="center"><img src="favicon.png"/></div>
 
     <script>
       // Slowly fade in image (5 seconds) and then slide it up (2 seconds).
@@ -22,7 +35,7 @@
         $("#splash").fadeIn(2000).slideUp(2000);
         // $("#splash").css('transform','rotate(45deg)');
       });
-    </script>
+    </script> -->
 
 	<header class="sticky-top">
 	<div id="nav-placeholder"></div>
@@ -58,7 +71,7 @@
 			<div class="col-md-7">
 				<p>
 					<b>How do I use this website? </b><br>
-					This website gives you self-paced courses to improve your ear-training skills. It contains a variety of exercises including interval training, chord training, scale training, melodic dictation, and harmonic dictation. Scroll down to access these coursescourses. Designed to faciliate individual agenda, each course is self-paced; you can select your desired program—each labelled with suggested time commitment and difficulty level—and follow through the scheduled course.
+					This website gives you guided programs to improve your ear-training skills. It contains a variety of exercises including interval training, chord training, scale training, melodic dictation, and harmonic dictation. Scroll down to access these programs. You can select your desired program—each labelled with suggested time commitment and difficulty level—and follow through the scheduled program.
 
 					If you want more training, feel free to check out the customizable options where you can choose which musical elements you want to train. <br><br>
 
@@ -68,14 +81,7 @@
 				</p>
 			</div>	
 		</div>
-<!-- 
-		<br>
-		<b>Contributors</b><br>
-		Project Advisor: Dr. Derek Jacoby, instructor in music<br>
-		Tech Advisors: Mr. David Crane, founder of ToneSavvy <br>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Dr. Nicholas Zufelt, instructor in mathematics, statistics, and computer science <br>
-		Sponsor: Phillips Academy’s Music Department<br>
-		Peer Support: Shira Wolpowitz '21 for her help with layout -->
+
 	</div>
 </div>
 
@@ -84,14 +90,14 @@
 	<div class="bg-cover text-white" align="center" style="background: black;">
 		<!-- <hr class="mt-5 mb-5"> -->
 		<div class="container py-5 text-center">
-	    	<h1 style="color: white;"><a style="color: white;" href="/programs.html">Programs</a></h1>
-	    		<p style="color: white; margin-bottom: -20px;">Click above to access the courses.</p>
+	    	<h1 style="color: white;"><a style="color: white;" href="/programs.html">Guided Programs</a></h1>
+	    		<p style="color: white; margin-bottom: -20px;">Click above to access the guided programs.</p>
 	    </div>
 	    <br>
 	    <!-- <hr class="mt-5 mb-5"> -->
 	</div>
 
-<div class="container-fluid" align="center">
+<!-- <div class="container-fluid" align="center">
 
 <br><br>
 
@@ -102,11 +108,13 @@
 <a class="btn btn-light text-wrap course" href="/customscale.html">Scale Training</a>
 <a class="btn btn-light text-wrap course" href="/customchordtraining.html">Chord Training</a><br>
 
-</div>
+</div> -->
+
+<br><br>
 
 <div style="margin: 0 auto; max-width: 80em;">
 	<div class="container-fluid" align="center">
-	<hr class="mt-5 mb-5">
+	<!-- <hr class="mt-5 mb-5"> -->
 	<p style="margin-top: -20px;">
 	
 	<!-- <b>Contributors</b><br>
@@ -120,15 +128,14 @@
 	<p style="font-size: 25px;">Special thanks to</p>
 
 	Project advisor and mentor: Dr. Derek Jacoby, Instructor in Music at Phillips Academy<br>
-	<i>Dr. Jacoby orchestrated this project from beginning to end with his invaluable guidance and seasoned expertise.</i><br>
+<!-- 	<i>Dr. Jacoby orchestrated this project from beginning to end with his invaluable guidance and seasoned expertise.</i><br> -->
 	Tech advisors: Mr. David Crane, Founder of <a href="https://tonesavvy.com/" class="link-primary">ToneSavvy</a><br>
-	Dr. Nicholas Zufelt, Instructor in Mathematics, Statistics, and Computer Science at Phillips Academy<br>
+	Dr. Nicholas Zufelt, Instructor in Mathematics, Statistics, and Computer Science at Phillips Academy,<br>
+	Mr. Stephen Russell, Instructor in Mathematics, Statistics, and Computer Science at Phillips Academy<br>
 	Sponsor: Phillips Academy’s Music Department<br>
-	Peer Support: Shira Wolpowitz '21 for her help with layout<br><br>
-<!-- 
-	This project was made possible by my advisor and mentor, Dr. Derek Jacoby. I would like to thank him for his endless support and invaluable guidance; I am so glad to have had the opportunity to work on this project with him.<br><br>
-
-	I would also like to thank Mr. David Crane, founder of ToneSavvy, and Dr. Nicholas Zufelt, Instructor in Computer Science at Phillips Academy Andover, for their help with coding. Additional thanks to Phillips Academy's Music Department for sponsoring this project and Shira Wolpowitz '21 for her help with the layout.<br><br> -->
+	Advisors: Mr. Peter Lorenco, Instructor in Music at Phillips Academy,<br>
+	Mr. Vincent Monaco, Instructor in Music at Phillips Academy<br> 
+	Peer support: Shira Wolpowitz '21 for her help with layout<br><br>
 
 	</p>
 	</div>

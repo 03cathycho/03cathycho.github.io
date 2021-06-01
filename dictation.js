@@ -24,8 +24,9 @@ function startTimer(duration, display) {
 }
 
 function showPicture(answer) {
+  // $("#promptImage").attr("style", "object-fit: fill;");
   $("#promptImage").attr("src", answer);
-  $("#promptImage").attr("width", "50%");
+  // $("#promptImage").attr("width", "50%");
   // $("#answer").attr("src", answer);
   // $("#answer").attr("style","visibility: visible");
   $("#buttonShow").hide();
@@ -35,8 +36,9 @@ function showPicture(answer) {
 }
 
 function hidePicture(prompt) {
+  // $("#promptImage").attr("style", "object-fit: fill;");
   $("#promptImage").attr("src", prompt);
-  $("#promptImage").attr("width", "10%");
+  // $("#promptImage").attr("width", "10%");
   // $("#answer").attr("style","visibility: hidden");
   $("#buttonShow").show();
   $("#buttonHide").attr("style","visibility: hidden");
@@ -75,8 +77,8 @@ function startDictation() {
 
 var harmonicday = [ 
   [ "/harmonicday1/harmonicday1a.html",
-  "/harmonicday1/harmonicday1b.html"
-  // "/harmonicday1/harmonicday1c.html",
+  "/harmonicday1/harmonicday1b.html",
+  "/harmonicday1/harmonicday1c.html",
   // "/harmonicday1/harmonicday1d.html",
   // "/harmonicday1/harmonicday1e.html",
   // "/harmonicday1/harmonicday1f.html",
@@ -85,7 +87,7 @@ var harmonicday = [
   ], [
   "/harmonicday2/harmonicday2a.html",
   "/harmonicday2/harmonicday2b.html",
-  // "/harmonicday2/harmonicday2c.html",
+  "/harmonicday2/harmonicday2c.html",
   // "/harmonicday2/harmonicday2d.html",
   // "/harmonicday2/harmonicday2e.html",
   // "/harmonicday2/harmonicday2f.html",
@@ -94,7 +96,7 @@ var harmonicday = [
   ], [
   "/harmonicday3/harmonicday3a.html",
   "/harmonicday3/harmonicday3b.html",
-  // "/harmonicday3/harmonicday3c.html",
+  "/harmonicday3/harmonicday3c.html",
   // "/harmonicday3/harmonicday3d.html",
   // "/harmonicday3/harmonicday3e.html",
   // "/harmonicday3/harmonicday3f.html",
@@ -103,7 +105,7 @@ var harmonicday = [
   ], [
   "/harmonicday4/harmonicday4a.html",
   "/harmonicday4/harmonicday4b.html",
-  // "/harmonicday4/harmonicday4c.html",
+  "/harmonicday4/harmonicday4c.html",
   // "/harmonicday4/harmonicday4d.html",
   // "/harmonicday4/harmonicday4e.html",
   // "/harmonicday4/harmonicday4f.html",
@@ -113,7 +115,7 @@ var harmonicday = [
   ], [
   "/harmonicday6/harmonicday6a.html",
   "/harmonicday6/harmonicday6b.html",
-  // "/harmonicday6/harmonicday6c.html",
+  "/harmonicday6/harmonicday6c.html",
   // "/harmonicday6/harmonicday6d.html",
   // "/harmonicday6/harmonicday6e.html",
   // "/harmonicday6/harmonicday6f.html",
@@ -122,7 +124,7 @@ var harmonicday = [
   ], [
   "/harmonicday7/harmonicday7a.html",
   "/harmonicday7/harmonicday7b.html",
-  // "/harmonicday7/harmonicday7c.html",
+  "/harmonicday7/harmonicday7c.html",
   // "/harmonicday7/harmonicday7d.html",
   // "/harmonicday7/harmonicday7e.html",
   // "/harmonicday7/harmonicday7f.html",
@@ -131,7 +133,7 @@ var harmonicday = [
   ], [
   "/harmonicday8/harmonicday8a.html",
   "/harmonicday8/harmonicday8b.html",
-  // "/harmonicday8/harmonicday8c.html",
+  "/harmonicday8/harmonicday8c.html",
   // "/harmonicday8/harmonicday8d.html",
   // "/harmonicday8/harmonicday8e.html",
   // "/harmonicday8/harmonicday8f.html",
@@ -140,7 +142,7 @@ var harmonicday = [
   ], [
   "/harmonicday9/harmonicday9a.html",
   "/harmonicday9/harmonicday9b.html",
-  // "/harmonicday9/harmonicday9c.html",
+  "/harmonicday9/harmonicday9c.html",
   // "/harmonicday9/harmonicday9d.html",
   // "/harmonicday9/harmonicday9e.html",
   // "/harmonicday9/harmonicday9f.html",
@@ -165,8 +167,8 @@ function chooseDictation(harmonicdayx, day, ex) {
 
 var melodicday = [ 
   [ "/melodicday1/melodicday1a.html",
-  "/melodicday1/melodicday1b.html"
-  // "/melodicday1/melodicday1c.html",
+  "/melodicday1/melodicday1b.html",
+  "/melodicday1/melodicday1c.html",
   // "/melodicday1/melodicday1d.html",
   // "/melodicday1/melodicday1e.html",
   // "/melodicday1/melodicday1f.html",
@@ -175,7 +177,7 @@ var melodicday = [
   ], [
   "/melodicday2/melodicday2a.html",
   "/melodicday2/melodicday2b.html",
-  // "/melodicday2/melodicday2c.html",
+  "/melodicday2/melodicday2c.html",
   // "/melodicday2/melodicday2d.html",
   // "/melodicday2/melodicday2e.html",
   // "/melodicday2/melodicday2f.html",
@@ -184,26 +186,26 @@ var melodicday = [
   ], [
   "/melodicday3/melodicday3a.html",
   "/melodicday3/melodicday3b.html",
-  // "/melodicday3/melodicday3c.html",
+  "/melodicday3/melodicday3c.html",
   // "/melodicday3/melodicday3d.html",
   // "/melodicday3/melodicday3e.html",
   // "/melodicday3/melodicday3f.html",
   // "/melodicday3/melodicday3g.html",
   // "/melodicday3/melodicday3h.html"
-  ], [
-  "/melodicday4/melodicday4a.html",
-  "/melodicday4/melodicday4b.html",
-  // "/melodicday4/melodicday4c.html",
-  // "/melodicday4/melodicday4d.html",
-  // "/melodicday4/melodicday4e.html",
-  // "/melodicday4/melodicday4f.html",
-  // "/melodicday4/melodicday4g.html",
-  // "/melodicday4/melodicday4h.html"
   ], ["break"
+  ], [
+  "/melodicday5/melodicday5a.html",
+  "/melodicday5/melodicday5b.html",
+  "/melodicday5/melodicday5c.html",
+  // "/melodicday5/melodicday5d.html",
+  // "/melodicday5/melodicday5e.html",
+  // "/melodicday5/melodicday5f.html",
+  // "/melodicday5/melodicday5g.html",
+  // "/melodicday5/melodicday5h.html"
   ], [
   "/melodicday6/melodicday6a.html",
   "/melodicday6/melodicday6b.html",
-  // "/melodicday6/melodicday6c.html",
+  "/melodicday6/melodicday6c.html",
   // "/melodicday6/melodicday6d.html",
   // "/melodicday6/melodicday6e.html",
   // "/melodicday6/melodicday6f.html",
@@ -212,30 +214,12 @@ var melodicday = [
   ], [
   "/melodicday7/melodicday7a.html",
   "/melodicday7/melodicday7b.html",
-  // "/melodicday7/melodicday7c.html",
+  "/melodicday7/melodicday7c.html",
   // "/melodicday7/melodicday7d.html",
   // "/melodicday7/melodicday7e.html",
   // "/melodicday7/melodicday7f.html",
   // "/melodicday7/melodicday7g.html",
   // "/melodicday7/melodicday7h.html"
-  ], [
-  "/melodicday8/melodicday8a.html",
-  "/melodicday8/melodicday8b.html",
-  // "/melodicday8/melodicday8c.html",
-  // "/melodicday8/melodicday8d.html",
-  // "/melodicday8/melodicday8e.html",
-  // "/melodicday8/melodicday8f.html",
-  // "/melodicday8/melodicday8g.html",
-  // "/melodicday8/melodicday8h.html"
-  ], [
-  "/melodicday9/melodicday9a.html",
-  "/melodicday9/melodicday9b.html",
-  // "/melodicday9/melodicday9c.html",
-  // "/melodicday9/melodicday9d.html",
-  // "/melodicday9/melodicday9e.html",
-  // "/melodicday9/melodicday9f.html",
-  // "/melodicday9/melodicday9g.html",
-  // "/melodicday9/melodicday9h.html"
   ]
 ];
 
