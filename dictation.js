@@ -187,7 +187,7 @@ var melodicday = [
   "/melodicday3/melodicday3a.html",
   "/melodicday3/melodicday3b.html",
   "/melodicday3/melodicday3c.html",
-  // "/melodicday3/melodicday3d.html",
+  "/melodicday3/melodicday3d.html",
   // "/melodicday3/melodicday3e.html",
   // "/melodicday3/melodicday3f.html",
   // "/melodicday3/melodicday3g.html",
