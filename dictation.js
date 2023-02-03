@@ -98,7 +98,7 @@ var harmonicday = [
   "/harmonicday3/harmonicday3b.html",
   "/harmonicday3/harmonicday3c.html",
   "/harmonicday3/harmonicday3d.html",
-  // "/harmonicday3/harmonicday3e.html",
+  "/harmonicday3/harmonicday3e.html",
   // "/harmonicday3/harmonicday3f.html",
   // "/harmonicday3/harmonicday3g.html",
   // "/harmonicday3/harmonicday3h.html"
