@@ -109,7 +109,7 @@ var harmonicday = [
   "/harmonicday4/harmonicday4d.html",
   "/harmonicday4/harmonicday4e.html",
   "/harmonicday4/harmonicday4f.html",
-  // "/harmonicday4/harmonicday4g.html",
+  "/harmonicday4/harmonicday4g.html",
   // "/harmonicday4/harmonicday4h.html"
   ], ["break"
   ], [
