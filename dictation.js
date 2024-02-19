@@ -125,7 +125,7 @@ var harmonicday = [
   "/harmonicday7/harmonicday7a.html",
   "/harmonicday7/harmonicday7b.html",
   "/harmonicday7/harmonicday7c.html",
-  // "/harmonicday7/harmonicday7d.html",
+  "/harmonicday7/harmonicday7d.html",
   // "/harmonicday7/harmonicday7e.html",
   // "/harmonicday7/harmonicday7f.html",
   // "/harmonicday7/harmonicday7g.html",
