@@ -1,128 +1,37 @@
-<!--
-cd Downloads/____ (goes to that file)
-ls (lists the files in it)
-python3 -m http.server
-control+c (exit)
-^ (command entered before)
-FOLDER: MIDI.js-master
-MIDI NOTES: https://www.researchgate.net/figure/A-representation-of-notes-in-the-MIDI-standard_tbl1_221276841
-LOADING MIDI IN PATH: https://stackoverflow.com/questions/10752055/cross-origin-requests-are-only-supported-for-http-error-when-loading-a-local
-GITHUB: https://github.com/mudcube/MIDI.js/
-THINGS TO DO: view source file (command+option+j) to catch syntax errors, view page source to see code
-TO RUN: http://localhost:8000/ -> http://localhost:8000/intervalsquiz.html
--->
+# Andover Music
 
-<!DOCTYPE html>
-<html>
-<body>
+Browser-based ear training for intervals, scales, chords, and dictation.
+Live at https://andovermusic.org.
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <!-- polyfill -->
-  <script src="/inc/shim/Base64.js" type="text/javascript"></script>
-  <script src="/inc/shim/Base64binary.js" type="text/javascript"></script>
-  <script src="/inc/shim/WebAudioAPI.js" type="text/javascript"></script>
-  <!-- midi.js package -->
-  <script src="/js/midi/audioDetect.js" type="text/javascript"></script>
-  <script src="/js/midi/gm.js" type="text/javascript"></script>
-  <script src="/js/midi/loader.js" type="text/javascript"></script>
-  <script src="/js/midi/plugin.audiotag.js" type="text/javascript"></script>
-  <script src="/js/midi/plugin.webaudio.js" type="text/javascript"></script>
-  <script src="/js/midi/plugin.webmidi.js" type="text/javascript"></script>
-  <!-- utils -->
-  <script src="/js/util/dom_request_xhr.js" type="text/javascript"></script>
-  <script src="/js/util/dom_request_script.js" type="text/javascript"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
+## What's in it
 
-<title>Interval Quiz: Radio Button Style</title>
-<h1>Hopefully this works!</h1>
+- Melodic and harmonic interval training
+- Scale and modal scale training
+- Triad and seventh-chord training, including inversions
+- Multi-day practice sets for each exercise type
+- Custom exercises
 
-<p>Select the correct interval:</p>
-<p>Current score: <text id="insertScore"></text></p>
-<button onclick="playAgain()">Click to hear again</button><br><br>
+## Running locally
 
-<input name="option" type="radio" id="1" />m2<br>
-<input name="option" type="radio" id="2" />M2<br>
-<input name="option" type="radio" id="3" />m3<br>
-<input name="option" type="radio" id="4" />M3<br>
-<input name="option" type="radio" id="5" />P4<br>
-<input name="option" type="radio" id="6" />TT<br>
-<input name="option" type="radio" id="7" />P5<br>
-<input name="option" type="radio" id="8" />m6<br>
-<input name="option" type="radio" id="9" />M6<br>
-<input name="option" type="radio" id="10" />m7<br>
-<input name="option" type="radio" id="11" />M7<br>
-<input name="option" type="radio" id="12" />P8<br>
+The pages load audio over HTTP, so open them through a local server rather
+than directly from disk:
 
-<p id="insertAnswer"></p>
-<button onclick="submit()">Submit</button><br><br>
-<div id="nextButton"><button onclick="next()">Next</button></div>
+    python3 -m http.server
 
-<script>
-  var startRange = 57; //57 = A4
-  var endRange = 69; //69 = A5
-  var noteBass = getRndInteger(startRange, endRange + 1); //C4-B4 *NOTE THE SPELLINGGGGGGGGGGGGGG 😎
-  var answer = getRndInteger(1, 12 + 1); 
-  var delay = 0.05; // play one note every quarter second
-  var velocity = 90; // how hard the note hits
-  var score = 0;
+Then go to http://localhost:8000.
 
-  window.onload = function () {
-    MIDI.loadPlugin({
-      soundfontUrl: "./soundfont/",
-      instrument: "acoustic_grand_piano",
-      onprogress: function(state, progress) {
-        console.log(state, progress);
-      },
-      onsuccess: function() {
-        MIDI.chordOn(0, [noteBass, noteBass + answer], velocity, delay);
-        MIDI.chordOff(0, [noteBass, noteBass + answer], delay + 1.5);
-      }
-    });
-  };
+## Built with
 
-  function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
+Plain HTML, CSS, and JavaScript, hosted on GitHub Pages. Audio uses
+[MIDI.js](https://github.com/mudcube/MIDI.js), with jQuery and Bootstrap for
+the interface.
 
-  function submit() {
-    // if ($(#answer).attr('checked')) {
-    if (document.getElementById(answer).checked) {
-      $("#insertAnswer").html("Correct!");
-      // document.getElementById("insertAnswer").innerHTML = "Correct!";        
-      $("#nextButton").show(); 
-      score++;
-      $("#insertScore").html(score);
-      } else {
-      $("#insertAnswer").html("Try again.")
-      // document.getElementById("insertAnswer").innerHTML = "Try again.";
-      $("#nextButton").hide(); 
-    }
-  }
+## Credits
 
-  function next() {
-    noteBass = getRndInteger(startRange, endRange + 1); //C4-B4
-    answer = getRndInteger(1, 12 + 1); 
-    MIDI.chordOn(0, [noteBass, noteBass + answer], velocity, delay);
-    MIDI.chordOff(0, [noteBass, noteBass + answer], delay + 1.5);
-    $("#insertAnswer").html("");
-    // document.getElementById("insertAnswer").innerHTML = "";
-  }
+Created by Cathy Cho '22 for an Independent Project at Phillips Academy
+Andover (Spring 2021), advised by Dr. Derek Jacoby.
 
-  function playAgain() {
-    MIDI.chordOn(0, [noteBass, noteBass + answer], velocity, delay);
-    MIDI.chordOff(0, [noteBass, noteBass + answer], delay + 1.5);
-  }
+## License
 
-  $(document).ready(function(){
-    $("#nextButton").hide();
-    $("#nextButton").click(function(){
-      $("#nextButton").hide(); 
-    });
-  });
-
-</script>
-
-</body>
-</html>
+MIT. See [LICENSE](LICENSE). Third-party libraries and soundfonts included
+here keep their own licenses.
